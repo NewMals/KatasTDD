@@ -22,8 +22,8 @@ public class ChristmasSongTest
 
 public class Song
 {
-    public object GetStropheFirstLine()
+    public string GetStropheFirstLine()
     {
-        throw new NotImplementedException();
+       return "On the first day of Christmas";
     }
 }
