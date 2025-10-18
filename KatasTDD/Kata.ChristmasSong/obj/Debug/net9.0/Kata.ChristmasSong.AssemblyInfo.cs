@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Kata.ChristmasSong")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d27cfcdc0fef9d459a7e96a41e372eb23ac42659")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a0f770e24bc231f97671503e7947ee85d334bc4b")]
 [assembly: System.Reflection.AssemblyProductAttribute("Kata.ChristmasSong")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Kata.ChristmasSong")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
