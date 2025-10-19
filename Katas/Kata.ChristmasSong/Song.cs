@@ -42,7 +42,7 @@ public class Song
 
     public string GetContentStrophe(int strophe)
     {
-        if(strophe > _linesSong.Count)
+        if(strophe < 1 || strophe > _linesSong.Count)
             throw new Exception("Estrofa no existe");
         
         var content = new List<string>

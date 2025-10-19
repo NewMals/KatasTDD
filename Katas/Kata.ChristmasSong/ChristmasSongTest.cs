@@ -117,7 +117,7 @@ public class ChristmasSongTest
     {
         //Arrange
         var song = () => _song.GetContentStrophe(strophe);
-        var message = "Estrofa no existe";
+        const string message = "Estrofa no existe";
         //Assert
         song.Should().ThrowExactly<Exception>().WithMessage(message);
     }
