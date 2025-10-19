@@ -138,10 +138,8 @@ public class ChristmasSongTest
     public void Si_Estrofa_No_Existe_Debe_Devolver_Excepcion()
     {
         //Arrange
-        var song = () => _song;
-        //Act
-        var getSong = _song.GetContentStrophe(13);
-
+        var song = () => _song.GetContentStrophe(13);
+        
         //Assert
         song.Should().ThrowExactly<Exception>();
     }
@@ -188,6 +186,9 @@ public class Song
 
     public string GetContentStrophe(int strophe)
     {
+        if(strophe > _linesSong.Count)
+            throw new Exception();
+        
         var content = new List<string>
         {
             GetStropheFirstLine(strophe),
