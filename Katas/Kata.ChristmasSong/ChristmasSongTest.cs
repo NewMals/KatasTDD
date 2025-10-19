@@ -64,7 +64,7 @@ public class ChristmasSongTest
         var song = new Song();
         
         //Act
-        var contentStrophe = song.GetContentStrophe();
+        var contentStrophe = song.GetContentStrophe(1);
 
         //Assert
         contentStrophe.Should().Be("On the first day of Christmas\nMy true love sent to me:\nA partridge in a pear tree.");
@@ -77,7 +77,7 @@ public class ChristmasSongTest
         var song = new Song();
         
         //Act
-        var getSong = song.GetSong();
+        var getSong = song.GetContentStrophe(2);
 
         //Assert
         getSong.Should().Be("On the second day of Christmas\nMy true love sent to me:\nTwo turtle doves and\nA partridge in a pear tree.");
@@ -115,25 +115,31 @@ public class Song
         { 12, "twelfth" }
     };
     
+    
     public string GetStropheFirstLine(int strophe) => $"On the {_daysNumbers.First(f => f.Key == strophe ).Value} day of Christmas";
     
     public string GetStropheSecondLine() => "My true love sent to me:";
 
     public string GetStropheThirdLine() => "A partridge in a pear tree.";
 
-    public string GetContentStrophe()
+    public string GetContentStrophe(int strophe)
     {
         var content = new List<string>
         {
-            GetStropheFirstLine(1),
+            GetStropheFirstLine(strophe),
             GetStropheSecondLine(),
-            GetStropheThirdLine()
         };
+        
+        if(strophe != 1)
+            content.Add("Two turtle doves and");
+
+        content.Add(GetStropheThirdLine());
+        
         return string.Join("\n", content);
     }
     
     public string GetSong()
     {
-        return GetContentStrophe() + "\n";
+        return GetContentStrophe(1) + "\n";
     }
 }
