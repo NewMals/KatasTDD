@@ -32,11 +32,14 @@ public class CalculateStatsTest
 
 public class CalculateStats
 {
+    private List<int> Sequence { get; set; }
     public CalculateStats(List<int>? sequence)
     {
         if (sequence == null || sequence.Count == 0)
             throw new Exception("Secuencia vacia");
+        
+        Sequence = sequence;
     }
 
-    public int GetValueMin() => 4;
+    public int GetValueMin() => Sequence.Min();
 }
