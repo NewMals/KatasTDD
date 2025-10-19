@@ -7,7 +7,7 @@ public class ChristmasSongTest
 {
     //- [ ] La primera linea de la primera estrofa, debe tener el siguiente contenido: On the first day of Christmas
     [Fact]
-    public void test()
+    public void Validar_Contenido_Primera_Linea_Primera_Estrofa()
     {
         //Arrange
         var song = new Song();
