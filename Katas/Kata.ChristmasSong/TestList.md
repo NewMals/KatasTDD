@@ -18,7 +18,7 @@ My true love sent to me:
 Two turtle doves and    
 A partridge in a pear tree.
 ```
-- [ ] Apartir de la sexta estrofa en adelante, en la primera linea se agrega al final una coma ",". Validar la estrofa 10, el cual debe tener el siguiente contenido:
+- [x] Apartir de la sexta estrofa en adelante, en la primera linea se agrega al final una coma ",". Validar la estrofa 10, el cual debe tener el siguiente contenido:
 
 ```
 On the tenth day of Christmas,

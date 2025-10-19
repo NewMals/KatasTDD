@@ -5,14 +5,13 @@ namespace ChrismasSong;
 
 public class ChristmasSongTest
 {
+    private readonly Song _song = new Song();
+    
     [Fact]
     public void Validar_Contenido_Primera_Linea_Primera_Estrofa()
     {
         //Arrange
-        var song = new Song();
-        
-        //Act
-        var firstLine = song.GetStropheFirstLine(1);
+        var firstLine = _song.GetStropheFirstLine(1);
 
         //Assert
         firstLine.Should().Be("On the first day of Christmas");
@@ -21,11 +20,9 @@ public class ChristmasSongTest
     [Fact]
     public void Validar_Primera_Linea_Cada_Estrofa()
     {
-        //Arrange
-        var song = new Song();
         
-        //Act
-        var firstLine = song.GetStropheFirstLine(7);
+        //Arrange
+        var firstLine = _song.GetStropheFirstLine(7);
 
         //Assert
         firstLine.Should().Be("On the seventh day of Christmas,");
@@ -33,12 +30,9 @@ public class ChristmasSongTest
     
     [Fact]
     public void Validar_Contenido_Segunda_Linea_Primera_Estrofa()
-    {
+    {   
         //Arrange
-        var song = new Song();
-        
-        //Act
-        var secondLine = song.GetStropheSecondLine();
+        var secondLine = _song.GetStropheSecondLine();
 
         //Assert
         secondLine.Should().Be("My true love sent to me:");
@@ -48,10 +42,7 @@ public class ChristmasSongTest
     public void Validar_Contenido_Primera_Estrofa()
     {
         //Arrange
-        var song = new Song();
-        
-        //Act
-        var contentStrophe = song.GetContentStrophe(1);
+        var contentStrophe = _song.GetContentStrophe(1);
 
         //Assert
         contentStrophe.Should().Be("On the first day of Christmas\nMy true love sent to me:\nA partridge in a pear tree.");
@@ -61,10 +52,7 @@ public class ChristmasSongTest
     public void Validar_Contenido_Segunda_Estrofa()
     {
         //Arrange
-        var song = new Song();
-        
-        //Act
-        var getSong = song.GetContentStrophe(2);
+        var getSong = _song.GetContentStrophe(2);
 
         //Assert
         getSong.Should().Be("On the second day of Christmas\nMy true love sent to me:\nTwo turtle doves and\nA partridge in a pear tree.");
@@ -74,10 +62,7 @@ public class ChristmasSongTest
     public void Validar_Contenido_Primera_Estrofa_Con_Salto_Linea()
     {
         //Arrange
-        var song = new Song();
-        
-        //Act
-        var getSong = song.GetSong();
+        var getSong = _song.GetSong();
 
         //Assert
         getSong.Should().Be("On the first day of Christmas\nMy true love sent to me:\nA partridge in a pear tree.\n");
@@ -89,26 +74,25 @@ public class ChristmasSongTest
     public void Validar_Contenido_Estrofa(int strophe, string content)
     {
         //Arrange
-        var song = new Song();
-        
-        //Act
-        var contentStrophe = song.GetContentStrophe(strophe);
+        var contentStrophe = _song.GetContentStrophe(strophe);
 
         //Assert
         contentStrophe.Should().Be(content);
     }
     
-    [Fact]
-    public void Validar_Primera_Linea_Con_Coma_Al_Final_Estrofa()
+    [Theory]
+    [InlineData(8,"On the eight day of Christmas,\nMy true love sent to me:\nEight maids a-milking\nSeven swans a-swimming\nSix geese a-laying\nFive golden rings\nFour calling birds\nThree french hens\nTwo turtle doves and\nA partridge in a pear tree.")]
+    [InlineData(10,"On the tenth day of Christmas,\nMy true love sent to me:\nTen lords a-leaping\nNine ladies dancing\nEight maids a-milking\nSeven swans a-swimming\nSix geese a-laying\nFive golden rings\nFour calling birds\nThree french hens\nTwo turtle doves and\nA partridge in a pear tree.")]
+    public void Validar_Primera_Linea_Con_Coma_Al_Final_Estrofa(int  strophe, string content)
     {
         //Arrange
         var song = new Song();
         
         //Act
-        var getSong = song.GetContentStrophe(8);
+        var getSong = song.GetContentStrophe(strophe);
 
         //Assert
-        getSong.Should().Be("On the eight day of Christmas,\nMy true love sent to me:\nEight maids a-milking\nSeven swans a-swimming\nSix geese a-laying\nFive golden rings\nFour calling birds\nThree french hens\nTwo turtle doves and\nA partridge in a pear tree.");
+        getSong.Should().Be(content);
     }
 }
 
