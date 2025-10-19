@@ -64,10 +64,10 @@ public class ChristmasSongTest
         var song = new Song();
         
         //Act
-        var contentStrophe = song.GetContentStrophe();
+        var getSong = song.GetSong();
 
         //Assert
-        contentStrophe.Should().Be("On the first day of Christmas\nMy true love sent to me:\nA partridge in a pear tree.\n");
+        getSong.Should().Be("On the first day of Christmas\nMy true love sent to me:\nA partridge in a pear tree.\n");
     }
 }
 
@@ -90,4 +90,9 @@ public class Song
         return string.Join("\n", content);
     }
 
+
+    public string GetSong()
+    {
+        return GetContentStrophe() + "\n";
+    }
 }
