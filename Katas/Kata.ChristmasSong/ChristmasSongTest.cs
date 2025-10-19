@@ -45,7 +45,7 @@ public class ChristmasSongTest
     }
     
     [Fact]
-    public void Test()
+    public void Validar_Contenido_Primera_Estrofa()
     {
         //Arrange
         var song = new Song();
@@ -55,6 +55,19 @@ public class ChristmasSongTest
 
         //Assert
         contentStrophe.Should().Be("On the first day of Christmas\nMy true love sent to me:\nA partridge in a pear tree.");
+    }
+    
+    [Fact]
+    public void Test()
+    {
+        //Arrange
+        var song = new Song();
+        
+        //Act
+        var contentStrophe = song.GetContentStrophe();
+
+        //Assert
+        contentStrophe.Should().Be("On the first day of Christmas\nMy true love sent to me:\nA partridge in a pear tree.\n");
     }
 }
 
