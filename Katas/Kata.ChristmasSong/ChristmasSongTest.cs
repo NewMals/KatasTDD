@@ -41,7 +41,7 @@ public class ChristmasSongTest
         var thirdLine = song.GetStropheThirdLine();
 
         //Assert
-        thirdLine.Should().Be("My true love sent to me");
+        thirdLine.Should().Be("A partridge in a pear tree.");
     }
 }
 
@@ -59,6 +59,6 @@ public class Song
 
     public object GetStropheThirdLine()
     {
-        throw new NotImplementedException();
+        return  "A partridge in a pear tree.";
     }
 }
