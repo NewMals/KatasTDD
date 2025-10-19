@@ -12,7 +12,7 @@ public class ChristmasSongTest
         var song = new Song();
         
         //Act
-        var firstLine = song.GetStropheFirstLine("first");
+        var firstLine = song.GetStropheFirstLine(1);
 
         //Assert
         firstLine.Should().Be("On the first day of Christmas");
@@ -25,7 +25,7 @@ public class ChristmasSongTest
         var song = new Song();
         
         //Act
-        var firstLine = song.GetStropheFirstLine("seventh");
+        var firstLine = song.GetStropheFirstLine(7);
 
         //Assert
         firstLine.Should().Be("On the seventh day of Christmas");
@@ -86,7 +86,23 @@ public class ChristmasSongTest
 
 public class Song
 {
-    public string GetStropheFirstLine(string strophe) => $"On the {strophe} day of Christmas";
+    private readonly Dictionary<int, string> _daysNumbers = new()
+    {
+        { 1, "first" },
+        { 2, "second" },
+        { 3, "third" },
+        { 4, "fourth" },
+        { 5, "fifth" },
+        { 6, "sixth" },
+        { 7, "seventh" },
+        { 8, "eighth" },
+        { 9, "ninth" },
+        { 10, "tenth" },
+        { 11, "eleventh" },
+        { 12, "twelfth" }
+    };
+    
+    public string GetStropheFirstLine(int strophe) => $"On the {_daysNumbers.First(f => f.Key == strophe ).Value} day of Christmas";
     
     public string GetStropheSecondLine() => "My true love sent to me:";
 
@@ -96,7 +112,7 @@ public class Song
     {
         var content = new List<string>
         {
-            GetStropheFirstLine("first"),
+            GetStropheFirstLine(1),
             GetStropheSecondLine(),
             GetStropheThirdLine()
         };
