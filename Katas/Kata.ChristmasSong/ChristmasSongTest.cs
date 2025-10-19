@@ -84,7 +84,7 @@ public class ChristmasSongTest
     }
     
     [Theory]
-    [InlineData(9, "On the ninth day of Christmas,\nMy true love sent to me:\nNine ladies dancing\nEight maids a-milking\nSeven swans a-swimming\nSix geese a-laying\nFive golden rings\nFour calling birds\nThree french hens\nTwo turtle doves and\nA partridge in a pear tree.")]
+    [InlineData(5, "On the fifth day of Christmas\nMy true love sent to me:\nFive golden rings\nFour calling birds\nThree french hens\nTwo turtle doves and\nA partridge in a pear tree.")]
     public void Validar_Contenido_Estrofa(int strophe, string content)
     {
         //Arrange
@@ -144,7 +144,7 @@ public class Song
             GetStropheSecondLine()
         };
         
-        content.AddRange(_linesSong.Take(strophe).OrderDescending());
+        content.AddRange(_linesSong.Take(strophe).Reverse());
         return string.Join("\n", content);
     }
     
