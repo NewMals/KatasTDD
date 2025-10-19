@@ -110,11 +110,13 @@ public class ChristmasSongTest
         getSong.Should().Be(content);
     }
     
-    [Fact]
-    public void Si_Estrofa_No_Existe_Debe_Devolver_Excepcion()
+    [Theory]
+    [InlineData(13)]
+    [InlineData(-1)]
+    public void Si_Estrofa_No_Existe_Debe_Devolver_Excepcion(int strophe)
     {
         //Arrange
-        var song = () => _song.GetContentStrophe(13);
+        var song = () => _song.GetContentStrophe(strophe);
         var message = "Estrofa no existe";
         //Assert
         song.Should().ThrowExactly<Exception>().WithMessage(message);
