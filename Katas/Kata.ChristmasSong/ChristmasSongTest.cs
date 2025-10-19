@@ -97,6 +97,19 @@ public class ChristmasSongTest
         //Assert
         contentStrophe.Should().Be(content);
     }
+    
+    [Fact]
+    public void Validar_Primera_Linea_Con_Coma_Al_Final_Estrofa()
+    {
+        //Arrange
+        var song = new Song();
+        
+        //Act
+        var getSong = song.GetContentStrophe(8);
+
+        //Assert
+        getSong.Should().Be("On the eight day of Christmas,\nMy true love sent to me:\nEight maids a-milking\nSeven swans a-swimming\nSix geese a-laying\nFive golden rings\nFour calling birds\nThree french hens\nTwo turtle doves and\nA partridge in a pear tree.");
+    }
 }
 
 public class Song
