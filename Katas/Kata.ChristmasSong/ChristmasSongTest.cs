@@ -18,9 +18,8 @@ public class ChristmasSongTest
         firstLine.Should().Be("On the first day of Christmas");
     }
     
-    //La segunda linea de la primera estrofa, debe tener el siguiente contenido: My true love sent to me:
     [Fact]
-    public void Test()
+    public void Validar_Contenido_Segunda_Linea_Primera_Estrofa()
     {
         //Arrange
         var song = new Song();
