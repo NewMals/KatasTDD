@@ -43,6 +43,19 @@ public class ChristmasSongTest
         //Assert
         thirdLine.Should().Be("A partridge in a pear tree.");
     }
+    
+    [Fact]
+    public void Test()
+    {
+        //Arrange
+        var song = new Song();
+        
+        //Act
+        var contentStrophe = song.GetContentStrophe();
+
+        //Assert
+        contentStrophe.Should().Be("On the first day of Christmas \n  My true love sent to me:\n  A partridge in a pear tree.");
+    }
 }
 
 public class Song
@@ -52,4 +65,9 @@ public class Song
     public string GetStropheSecondLine() => "My true love sent to me";
 
     public string GetStropheThirdLine() => "A partridge in a pear tree.";
+
+    public object GetContentStrophe()
+    {
+        throw new NotImplementedException();
+    }
 }
