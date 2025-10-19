@@ -30,6 +30,19 @@ public class ChristmasSongTest
         //Assert
         secondLine.Should().Be("My true love sent to me");
     }
+    
+    [Fact]
+    public void Test()
+    {
+        //Arrange
+        var song = new Song();
+        
+        //Act
+        var thirdLine = song.GetStropheThirdLine();
+
+        //Assert
+        thirdLine.Should().Be("My true love sent to me");
+    }
 }
 
 public class Song
@@ -42,5 +55,10 @@ public class Song
     public string GetStropheSecondLine()
     {
         return  "My true love sent to me";
+    }
+
+    public object GetStropheThirdLine()
+    {
+        throw new NotImplementedException();
     }
 }

@@ -1,7 +1,7 @@
 ## Criterios para la cancion de navidad
 
 - [x] La primera linea de la primera estrofa, debe tener el siguiente contenido: On the first day of Christmas
-- [ ] La segunda linea de la primera estrofa, debe tener el siguiente contenido: My true love sent to me:
+- [x] La segunda linea de la primera estrofa, debe tener el siguiente contenido: My true love sent to me:
 - [ ] La tercera linea de la primera estrofa, debe tener el siguiente contenido: A partridge in a pear tree.
 - [ ] La primera estrofa debe tener en cuenta el siguiente contenido, incluyendo los saltos de linea:
   ```
