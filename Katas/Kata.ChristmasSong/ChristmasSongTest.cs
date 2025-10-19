@@ -5,7 +5,6 @@ namespace ChrismasSong;
 
 public class ChristmasSongTest
 {
-    //- [ ] La primera linea de la primera estrofa, debe tener el siguiente contenido: On the first day of Christmas
     [Fact]
     public void Validar_Contenido_Primera_Linea_Primera_Estrofa()
     {
@@ -18,6 +17,20 @@ public class ChristmasSongTest
         //Assert
         firstLine.Should().Be("On the first day of Christmas");
     }
+    
+    //La segunda linea de la primera estrofa, debe tener el siguiente contenido: My true love sent to me:
+    [Fact]
+    public void Test()
+    {
+        //Arrange
+        var song = new Song();
+        
+        //Act
+        var secondLine = song.GetStropheSecondLine();
+
+        //Assert
+        secondLine.Should().Be("My true love sent to me");
+    }
 }
 
 public class Song
@@ -25,5 +38,10 @@ public class Song
     public string GetStropheFirstLine()
     {
        return "On the first day of Christmas";
+    }
+
+    public object GetStropheSecondLine()
+    {
+        throw new NotImplementedException();
     }
 }
