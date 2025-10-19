@@ -59,8 +59,5 @@ public class CalculateStats
 
     public int GetValueMin() => Sequence.Min();
 
-    public object GetValueMax()
-    {
-        return 20;
-    }
+    public object GetValueMax() => Sequence.Max();
 }
