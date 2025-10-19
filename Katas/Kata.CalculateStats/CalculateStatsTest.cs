@@ -30,19 +30,19 @@ public class CalculateStatsTest
         valueMin.Should().Be(valueMinExpect);
     }
     
-    [Fact]
-    
-    public void Validar_Valor_Maximo_Secuencia()
+    [Theory]
+    [InlineData(new int[] {20, 11}, 20)]
+    [InlineData(new int[] {13, -6}, 13)]
+    public void Validar_Valor_Maximo_Secuencia(int[] sequence, int valueMaxExpect)
     {
         //Arrange
-        var sequence = new List<int> { 20, 11 };
         var calculateStats = new CalculateStats(sequence.ToList()); 
         
         //Act
         var valueMax = calculateStats.GetValueMax();
         
         //Asserts
-        valueMax.Should().Be(20);
+        valueMax.Should().Be(valueMaxExpect);
     }
 }
 

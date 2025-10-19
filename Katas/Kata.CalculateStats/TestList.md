@@ -3,8 +3,8 @@
 - [X] Si la secuencia de enteros esta vacia, debe devolver una excepcion
 - [X] Si el primer numero es 4 y el segundo numero es 8, debe devolve el valor minimo 4
 - [X] Si el primer numero es -1 y el segundo numero es 6, debe devolve el valor minimo -1
-- [ ] Si el primer numero es 20 y el segundo numero es 11, debe devolve el valor maximo 20
-- [ ] Si el primer numero es 13 y el segundo numero es -6, debe devolve el valor maximo 13
+- [x] Si el primer numero es 20 y el segundo numero es 11, debe devolve el valor maximo 20
+- [x] Si el primer numero es 13 y el segundo numero es -6, debe devolve el valor maximo 13
 - [ ] Si el primer numero es 9 y el segundo numero es 17, debe devolver el promedio 13
 - [ ] Si se envian 6,9,15,-2,11, debe devolver el promedio 21.833333
 - [ ] Si se envian 6,9,15,-2,11, debe devolver la cantidad de elementos 6
