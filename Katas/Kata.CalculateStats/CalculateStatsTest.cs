@@ -8,7 +8,7 @@ public class CalculateStatsTest
     public void Test1()
     {
         //Arrange
-        var calculateStats = () => new CalculateStats(); 
+        var calculateStats = () => new CalculateStats(null); 
         
         //Asserts
         calculateStats.Should().Throw<Exception>();
@@ -17,5 +17,8 @@ public class CalculateStatsTest
 
 public class CalculateStats
 {
-    
+    public CalculateStats(List<int> sequence)
+    {
+        throw new Exception();
+    }
 }
