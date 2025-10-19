@@ -84,6 +84,7 @@ public class ChristmasSongTest
     }
     
     [Theory]
+    [InlineData(4, "On the fourth day of Christmas\nMy true love sent to me:\nFour calling birds\nThree french hens\nTwo turtle doves and\nA partridge in a pear tree.")]
     [InlineData(5, "On the fifth day of Christmas\nMy true love sent to me:\nFive golden rings\nFour calling birds\nThree french hens\nTwo turtle doves and\nA partridge in a pear tree.")]
     public void Validar_Contenido_Estrofa(int strophe, string content)
     {
