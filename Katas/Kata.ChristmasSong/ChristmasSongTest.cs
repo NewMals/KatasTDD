@@ -170,20 +170,11 @@ public class Song
         return string.Join("\n", content);
     }
     
-    public string GetSong()
-    {
-        return 
-            GetContentStrophe(1) + "\n\n" +
-            GetContentStrophe(2) + "\n\n" +
-            GetContentStrophe(3) + "\n\n" +
-            GetContentStrophe(4) + "\n\n" +
-            GetContentStrophe(5) + "\n\n" +
-            GetContentStrophe(6) + "\n\n" +
-            GetContentStrophe(7) + "\n\n" +
-            GetContentStrophe(8) + "\n\n" +
-            GetContentStrophe(9) + "\n\n" +
-            GetContentStrophe(10) + "\n\n" +
-            GetContentStrophe(11) + "\n\n" +
-            GetContentStrophe(12);
-    }
+    public string GetSong() =>
+        _linesSong
+            .Select(line => _linesSong.IndexOf(line) + 1)
+            .Aggregate(string.Empty, 
+                (current, index) => current + $"{GetContentStrophe(index)}{(index == _linesSong.Count ? "" : "\n\n")}"
+            );
+    
 }

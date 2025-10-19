@@ -55,4 +55,4 @@ Two turtle doves and
 A partridge in a pear tree.
 ```
 
-- [ ] Validar el contenido de toda la canción
+- [x] Validar el contenido de toda la canción
