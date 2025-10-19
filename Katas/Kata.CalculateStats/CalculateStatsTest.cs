@@ -9,6 +9,7 @@ public class CalculateStatsTest
     {
         //Arrange
         var calculateStats = () => new CalculateStats(null); 
+        var message = "Secuencia vacia";
         
         //Asserts
         calculateStats.Should().Throw<Exception>();
@@ -17,8 +18,9 @@ public class CalculateStatsTest
 
 public class CalculateStats
 {
-    public CalculateStats(List<int> sequence)
+    public CalculateStats(List<int>? sequence)
     {
-        throw new Exception();
+        if (sequence == null || sequence.Count == 0)
+            throw new Exception("Secuencia vacia");
     }
 }
