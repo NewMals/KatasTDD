@@ -58,7 +58,7 @@ public class ChristmasSongTest
     }
     
     [Fact]
-    public void Test()
+    public void Validar_Contenido_Primera_Estrofa_Con_Salto_Linea()
     {
         //Arrange
         var song = new Song();
@@ -89,8 +89,7 @@ public class Song
         };
         return string.Join("\n", content);
     }
-
-
+    
     public string GetSong()
     {
         return GetContentStrophe() + "\n";
