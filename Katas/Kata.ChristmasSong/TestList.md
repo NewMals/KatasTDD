@@ -35,7 +35,7 @@ Two turtle doves and
 A partridge in a pear tree.
 ```
 
-- [ ] Validar el contenido de dos estrofas continuas
+- [x] Validar el contenido de dos estrofas continuas
 ```
 On the fifth day of Christmas
 My true love sent to me:
@@ -54,3 +54,5 @@ Three french hens
 Two turtle doves and
 A partridge in a pear tree.
 ```
+
+- [ ] Validar el contenido de toda la canción
