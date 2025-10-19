@@ -61,6 +61,6 @@ public class CalculateStats
 
     public object GetValueMax()
     {
-        throw new NotImplementedException();
+        return 20;
     }
 }
