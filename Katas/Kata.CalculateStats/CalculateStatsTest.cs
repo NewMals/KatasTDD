@@ -15,18 +15,19 @@ public class CalculateStatsTest
         calculateStats.Should().Throw<Exception>().WithMessage(message);
     }
     
-    [Fact]
-    public void S_Primer_Numero_Cuatro_El_Segundo_Numero_Ocho_Debe_Devolve_Valor_Minimo_Cuatro()
+    [Theory]
+    [InlineData(new int[] {4, 8}, 4)]
+    [InlineData(new int[] {-1, 6}, -1)]
+    public void Validar_Valor_Minimo_Secuencia(int[] sequence, int valueMinExpect)
     {
         //Arrange
-        var sequence = new List<int>(){4, 8};
-        var calculateStats = new CalculateStats(sequence); 
+        var calculateStats = new CalculateStats(sequence.ToList()); 
         
         //Act
         var valueMin = calculateStats.GetValueMin();
         
         //Asserts
-        valueMin.Should().Be(4);
+        valueMin.Should().Be(valueMinExpect);
     }
 }
 
