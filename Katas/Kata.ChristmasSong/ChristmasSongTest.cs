@@ -66,8 +66,9 @@ public class Song
 
     public string GetStropheThirdLine() => "A partridge in a pear tree.";
 
-    public object GetContentStrophe()
+    public string GetContentStrophe()
     {
-        throw new NotImplementedException();
+
+        return "On the first day of Christmas \n  My true love sent to me:\n  A partridge in a pear tree.";
     }
 }
