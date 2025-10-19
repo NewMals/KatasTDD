@@ -28,7 +28,7 @@ public class ChristmasSongTest
         var secondLine = song.GetStropheSecondLine();
 
         //Assert
-        secondLine.Should().Be("My true love sent to me");
+        secondLine.Should().Be("My true love sent to me:");
     }
     
     [Fact]
@@ -54,7 +54,7 @@ public class ChristmasSongTest
         var contentStrophe = song.GetContentStrophe();
 
         //Assert
-        contentStrophe.Should().Be("On the first day of Christmas \n  My true love sent to me:\n  A partridge in a pear tree.");
+        contentStrophe.Should().Be("On the first day of Christmas\nMy true love sent to me:\nA partridge in a pear tree.");
     }
 }
 
@@ -62,13 +62,19 @@ public class Song
 {
     public string GetStropheFirstLine() => "On the first day of Christmas";
     
-    public string GetStropheSecondLine() => "My true love sent to me";
+    public string GetStropheSecondLine() => "My true love sent to me:";
 
     public string GetStropheThirdLine() => "A partridge in a pear tree.";
 
     public string GetContentStrophe()
     {
-
-        return "On the first day of Christmas \n  My true love sent to me:\n  A partridge in a pear tree.";
+        var content = new List<string>
+        {
+            GetStropheFirstLine(),
+            GetStropheSecondLine(),
+            GetStropheThirdLine()
+        };
+        return string.Join("\n", content);
     }
+
 }
