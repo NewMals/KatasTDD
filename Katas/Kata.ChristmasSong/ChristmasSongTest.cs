@@ -32,7 +32,7 @@ public class ChristmasSongTest
     }
     
     [Fact]
-    public void Test()
+    public void Validar_Contenido_Tercera_Linea_Segunda_Estrofa()
     {
         //Arrange
         var song = new Song();
@@ -47,18 +47,9 @@ public class ChristmasSongTest
 
 public class Song
 {
-    public string GetStropheFirstLine()
-    {
-       return "On the first day of Christmas";
-    }
+    public string GetStropheFirstLine() => "On the first day of Christmas";
+    
+    public string GetStropheSecondLine() => "My true love sent to me";
 
-    public string GetStropheSecondLine()
-    {
-        return  "My true love sent to me";
-    }
-
-    public object GetStropheThirdLine()
-    {
-        return  "A partridge in a pear tree.";
-    }
+    public string GetStropheThirdLine() => "A partridge in a pear tree.";
 }
