@@ -19,6 +19,19 @@ public class ChristmasSongTest
     }
     
     [Fact]
+    public void Validar_Primera_Linea_Cada_Estrofa()
+    {
+        //Arrange
+        var song = new Song();
+        
+        //Act
+        var firstLine = song.GetStropheFirstLine();
+
+        //Assert
+        firstLine.Should().Be("On the seventh day of Christmas");
+    }
+    
+    [Fact]
     public void Validar_Contenido_Segunda_Linea_Primera_Estrofa()
     {
         //Arrange
