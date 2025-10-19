@@ -34,3 +34,23 @@ Three french hens
 Two turtle doves and
 A partridge in a pear tree.
 ```
+
+- [ ] Validar el contenido de dos estrofas continuas
+```
+On the fifth day of Christmas
+My true love sent to me:
+Five golden rings
+Four calling birds
+Three french hens
+Two turtle doves and
+A partridge in a pear tree.
+
+On the sixth day of Christmas,
+My true love sent to me:
+Six geese a-laying
+Five golden rings
+Four calling birds
+Three french hens
+Two turtle doves and
+A partridge in a pear tree.
+```

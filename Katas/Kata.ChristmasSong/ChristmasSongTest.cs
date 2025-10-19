@@ -86,14 +86,26 @@ public class ChristmasSongTest
     public void Validar_Primera_Linea_Con_Coma_Al_Final_Estrofa(int  strophe, string content)
     {
         //Arrange
-        var song = new Song();
-        
-        //Act
-        var getSong = song.GetContentStrophe(strophe);
+        var getSong = _song.GetContentStrophe(strophe);
 
         //Assert
         getSong.Should().Be(content);
     }
+    
+    [Fact]
+    public void Test()
+    {
+        //Arrange
+        var strophes ="On the fifth day of Christmas\nMy true love sent to me:\nFive golden rings\nFour calling birds\nThree french hens\nTwo turtle doves and\nA partridge in a pear tree.\n\nOn the sixth day of Christmas,\nMy true love sent to me:\nSix geese a-laying\nFive golden rings\nFour calling birds\nThree french hens\nTwo turtle doves and\nA partridge in a pear tree.";
+        
+        //Act
+        var getSong = _song.GetContentStrophe(4);
+
+        //Assert
+        getSong.Should().Be(strophes);
+    }
+    
+    
 }
 
 public class Song
