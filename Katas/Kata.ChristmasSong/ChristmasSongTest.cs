@@ -147,7 +147,7 @@ public class Song
             GetStropheSecondLine()
         };
         
-        content.AddRange(_linesSong.Take(strophe));
+        content.AddRange(_linesSong.Take(strophe).OrderDescending());
         return string.Join("\n", content);
     }
     
