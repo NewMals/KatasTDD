@@ -29,6 +29,21 @@ public class CalculateStatsTest
         //Asserts
         valueMin.Should().Be(valueMinExpect);
     }
+    
+    [Fact]
+    
+    public void Validar_Valor_Maximo_Secuencia()
+    {
+        //Arrange
+        var sequence = new List<int> { 20, 11 };
+        var calculateStats = new CalculateStats(sequence.ToList()); 
+        
+        //Act
+        var valueMax = calculateStats.GetValueMax();
+        
+        //Asserts
+        valueMax.Should().Be(20);
+    }
 }
 
 public class CalculateStats
@@ -43,4 +58,9 @@ public class CalculateStats
     }
 
     public int GetValueMin() => Sequence.Min();
+
+    public object GetValueMax()
+    {
+        throw new NotImplementedException();
+    }
 }
