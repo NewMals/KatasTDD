@@ -71,6 +71,19 @@ public class ChristmasSongTest
     }
     
     [Fact]
+    public void Validar_Contenido_Segunda_Estrofa()
+    {
+        //Arrange
+        var song = new Song();
+        
+        //Act
+        var getSong = song.GetSong();
+
+        //Assert
+        getSong.Should().Be("On the second day of Christmas\nMy true love sent to me:\nTwo turtle doves and\nA partridge in a pear tree.");
+    }
+    
+    [Fact]
     public void Validar_Contenido_Primera_Estrofa_Con_Salto_Linea()
     {
         //Arrange

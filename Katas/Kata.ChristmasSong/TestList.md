@@ -10,7 +10,7 @@
   A partridge in a pear tree.
   ```
 - [x] Siempre debe haber un salto de linea entre cada estrofa, con el fin de identificar que es una nueva estrofa
-- [ ] En la primera linea de cada estrofa, el contenido debe cambiar el dia, validar la estrofa 7, el cual debe tener el contenido "On the seventh day of Christmas"
+- [x] En la primera linea de cada estrofa, el contenido debe cambiar el dia, validar la estrofa 7, el cual debe tener el contenido "On the seventh day of Christmas"
 - [ ] La segunda estrofa debe tener en cuenta el siguiente contenido, incluyendo los saltos de linea:
 ```
 On the second day of Christmas
