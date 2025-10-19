@@ -28,7 +28,7 @@ public class ChristmasSongTest
         var firstLine = song.GetStropheFirstLine(7);
 
         //Assert
-        firstLine.Should().Be("On the seventh day of Christmas");
+        firstLine.Should().Be("On the seventh day of Christmas,");
     }
     
     [Fact]
@@ -123,7 +123,7 @@ public class Song
         { 5, "fifth" },
         { 6, "sixth" },
         { 7, "seventh" },
-        { 8, "eighth" },
+        { 8, "eight" },
         { 9, "ninth" },
         { 10, "tenth" },
         { 11, "eleventh" },
@@ -146,7 +146,8 @@ public class Song
         "Twelve drummers drumming"
     ];
     
-    public string GetStropheFirstLine(int strophe) => $"On the {_daysNumbers.First(f => f.Key == strophe ).Value} day of Christmas";
+    public string GetStropheFirstLine(int strophe) => 
+        $"On the {_daysNumbers.First(f => f.Key == strophe ).Value} day of Christmas{(strophe > 5 ? "," : "")}";
     
     public string GetStropheSecondLine() => "My true love sent to me:";
 
