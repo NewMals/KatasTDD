@@ -114,6 +114,23 @@ public class Song
         { 11, "eleventh" },
         { 12, "twelfth" }
     };
+
+    private List<string> _linesSong =
+    [
+        "A partridge in a pear tree.",
+        "Two turtle doves and",
+        "Three french hens",
+        "Four calling birds",
+        "Five golden rings",
+        "Six geese a-laying",
+        "Seven swans a-swimming",
+        "Eight maids a-milking",
+        "Nine ladies dancing",
+        "Ten lords a-leaping",
+        "Eleven pipers piping",
+        "Twelve drummers drumming"
+    ];
+        
     
     
     public string GetStropheFirstLine(int strophe) => $"On the {_daysNumbers.First(f => f.Key == strophe ).Value} day of Christmas";
@@ -127,14 +144,10 @@ public class Song
         var content = new List<string>
         {
             GetStropheFirstLine(strophe),
-            GetStropheSecondLine(),
+            GetStropheSecondLine()
         };
         
-        if(strophe != 1)
-            content.Add("Two turtle doves and");
-
-        content.Add(GetStropheThirdLine());
-        
+        content.AddRange(_linesSong.Take(strophe));
         return string.Join("\n", content);
     }
     
