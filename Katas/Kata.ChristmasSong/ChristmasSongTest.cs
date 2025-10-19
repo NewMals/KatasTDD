@@ -99,7 +99,7 @@ public class ChristmasSongTest
         var strophes ="On the fifth day of Christmas\nMy true love sent to me:\nFive golden rings\nFour calling birds\nThree french hens\nTwo turtle doves and\nA partridge in a pear tree.\n\nOn the sixth day of Christmas,\nMy true love sent to me:\nSix geese a-laying\nFive golden rings\nFour calling birds\nThree french hens\nTwo turtle doves and\nA partridge in a pear tree.";
         
         //Act
-        var getSong = _song.GetContentStrophe(4);
+        var getSong = $"{_song.GetContentStrophe(5)}\n\n{_song.GetContentStrophe(6)}";
 
         //Assert
         getSong.Should().Be(strophes);
