@@ -62,7 +62,7 @@ public class ChristmasSongTest
     public void Validar_Contenido_Primera_Estrofa_Con_Salto_Linea()
     {
         //Arrange
-        var getSong = _song.GetSong();
+        var getSong = $"{_song.GetContentStrophe(1)}\n";
 
         //Assert
         getSong.Should().Be("On the first day of Christmas\nMy true love sent to me:\nA partridge in a pear tree.\n");
@@ -172,6 +172,18 @@ public class Song
     
     public string GetSong()
     {
-        return GetContentStrophe(1) + "\n";
+        return 
+            GetContentStrophe(1) + "\n\n" +
+            GetContentStrophe(2) + "\n\n" +
+            GetContentStrophe(3) + "\n\n" +
+            GetContentStrophe(4) + "\n\n" +
+            GetContentStrophe(5) + "\n\n" +
+            GetContentStrophe(6) + "\n\n" +
+            GetContentStrophe(7) + "\n\n" +
+            GetContentStrophe(8) + "\n\n" +
+            GetContentStrophe(9) + "\n\n" +
+            GetContentStrophe(10) + "\n\n" +
+            GetContentStrophe(11) + "\n\n" +
+            GetContentStrophe(12);
     }
 }
