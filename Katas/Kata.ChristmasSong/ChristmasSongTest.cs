@@ -41,7 +41,7 @@ public class ChristmasSongTest
         const string content = "My true love sent to me:";
         
         //Act
-        var secondLine = _song.GetStropheSecondLine();
+        var secondLine = Song.SecondLine;
 
         //Assert
         secondLine.Should().Be(content);
@@ -111,6 +111,16 @@ public class ChristmasSongTest
     }
     
     [Fact]
+    public void Si_Estrofa_No_Existe_Debe_Devolver_Excepcion()
+    {
+        //Arrange
+        var song = () => _song.GetContentStrophe(13);
+        var message = "Estrofa no existe";
+        //Assert
+        song.Should().ThrowExactly<Exception>().WithMessage(message);
+    }
+    
+    [Fact]
     public void Validar_Contenido_Cancion()
     {
         //Arrange
@@ -133,77 +143,4 @@ public class ChristmasSongTest
         //Assert
         getSong.Should().Be(content);
     }
-    
-    [Fact]
-    public void Si_Estrofa_No_Existe_Debe_Devolver_Excepcion()
-    {
-        //Arrange
-        var song = () => _song.GetContentStrophe(13);
-        
-        //Assert
-        song.Should().ThrowExactly<Exception>();
-    }
-}
-
-public class Song
-{
-    private readonly Dictionary<int, string> _daysNumbers = new()
-    {
-        { 1, "first" },
-        { 2, "second" },
-        { 3, "third" },
-        { 4, "fourth" },
-        { 5, "fifth" },
-        { 6, "sixth" },
-        { 7, "seventh" },
-        { 8, "eight" },
-        { 9, "ninth" },
-        { 10, "tenth" },
-        { 11, "eleventh" },
-        { 12, "twelfth" }
-    };
-
-    private readonly List<string> _linesSong =
-    [
-        "A partridge in a pear tree.",
-        "Two turtle doves and",
-        "Three french hens",
-        "Four calling birds",
-        "Five golden rings",
-        "Six geese a-laying",
-        "Seven swans a-swimming",
-        "Eight maids a-milking",
-        "Nine ladies dancing",
-        "Ten lords a-leaping",
-        "Eleven pipers piping",
-        "Twelve drummers drumming"
-    ];
-    
-    public string GetStropheFirstLine(int strophe) => 
-        $"On the {_daysNumbers.First(f => f.Key == strophe ).Value} day of Christmas{(strophe > 5 ? "," : "")}";
-    
-    public string GetStropheSecondLine() => "My true love sent to me:";
-
-    public string GetContentStrophe(int strophe)
-    {
-        if(strophe > _linesSong.Count)
-            throw new Exception();
-        
-        var content = new List<string>
-        {
-            GetStropheFirstLine(strophe),
-            GetStropheSecondLine()
-        };
-        
-        content.AddRange(_linesSong.Take(strophe).Reverse());
-        return string.Join("\n", content);
-    }
-    
-    public string GetSong() =>
-        _linesSong
-            .Select(line => _linesSong.IndexOf(line) + 1)
-            .Aggregate(string.Empty, 
-                (current, index) => current + $"{GetContentStrophe(index)}{(index == _linesSong.Count ? "" : "\n\n")}"
-            );
-    
 }
