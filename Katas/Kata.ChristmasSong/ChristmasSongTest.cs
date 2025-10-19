@@ -40,8 +40,8 @@ public class Song
        return "On the first day of Christmas";
     }
 
-    public object GetStropheSecondLine()
+    public string GetStropheSecondLine()
     {
-        throw new NotImplementedException();
+        return  "My true love sent to me";
     }
 }
