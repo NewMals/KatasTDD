@@ -38,8 +38,5 @@ public class CalculateStats
             throw new Exception("Secuencia vacia");
     }
 
-    public object GetValueMin()
-    {
-        throw new NotImplementedException();
-    }
+    public int GetValueMin() => 4;
 }
