@@ -56,3 +56,4 @@ A partridge in a pear tree.
 ```
 
 - [x] Validar el contenido de toda la canción
+- [ ] Devolver excepcion si se llega a solicitar contenido de una estrofa que no existe

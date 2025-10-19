@@ -11,10 +11,13 @@ public class ChristmasSongTest
     public void Validar_Contenido_Primera_Linea_Primera_Estrofa()
     {
         //Arrange
+        const string content = "On the first day of Christmas";
+        
+        //Act
         var firstLine = _song.GetStropheFirstLine(1);
 
         //Assert
-        firstLine.Should().Be("On the first day of Christmas");
+        firstLine.Should().Be(content);
     }
     
     [Fact]
@@ -22,50 +25,65 @@ public class ChristmasSongTest
     {
         
         //Arrange
+        const string content = "On the seventh day of Christmas,";
+        
+        //Act
         var firstLine = _song.GetStropheFirstLine(7);
 
         //Assert
-        firstLine.Should().Be("On the seventh day of Christmas,");
+        firstLine.Should().Be(content);
     }
     
     [Fact]
     public void Validar_Contenido_Segunda_Linea_Primera_Estrofa()
     {   
         //Arrange
+        const string content = "My true love sent to me:";
+        
+        //Act
         var secondLine = _song.GetStropheSecondLine();
 
         //Assert
-        secondLine.Should().Be("My true love sent to me:");
+        secondLine.Should().Be(content);
     }
     
     [Fact]
     public void Validar_Contenido_Primera_Estrofa()
     {
         //Arrange
+        const string content = "On the first day of Christmas\nMy true love sent to me:\nA partridge in a pear tree.";
+        
+        //Act
         var contentStrophe = _song.GetContentStrophe(1);
 
         //Assert
-        contentStrophe.Should().Be("On the first day of Christmas\nMy true love sent to me:\nA partridge in a pear tree.");
+        contentStrophe.Should().Be(content);
     }
     
     [Fact]
     public void Validar_Contenido_Segunda_Estrofa()
     {
         //Arrange
+        const string content = "On the second day of Christmas\nMy true love sent to me:\nTwo turtle doves and\nA partridge in a pear tree.";
+        
+        //Act
         var getSong = _song.GetContentStrophe(2);
 
         //Assert
-        getSong.Should().Be("On the second day of Christmas\nMy true love sent to me:\nTwo turtle doves and\nA partridge in a pear tree.");
+        getSong.Should().Be(content);
     }
     
     [Fact]
     public void Validar_Contenido_Primera_Estrofa_Con_Salto_Linea()
     {
         //Arrange
+        const string content = "On the first day of Christmas\nMy true love sent to me:\nA partridge in a pear tree.\n";
+        
+        //Act
         var getSong = $"{_song.GetContentStrophe(1)}\n";
 
         //Assert
-        getSong.Should().Be("On the first day of Christmas\nMy true love sent to me:\nA partridge in a pear tree.\n");
+        getSong.Should().Be(content);
     }
     
     [Theory]
@@ -93,10 +111,10 @@ public class ChristmasSongTest
     }
     
     [Fact]
-    public void Test()
+    public void Validar_Contenido_Cancion()
     {
         //Arrange
-        var strophes ="On the first day of Christmas\nMy true love sent to me:\nA partridge in a pear tree.\n\n" +
+        const string content ="On the first day of Christmas\nMy true love sent to me:\nA partridge in a pear tree.\n\n" +
                       "On the second day of Christmas\nMy true love sent to me:\nTwo turtle doves and\nA partridge in a pear tree.\n\n" +
                       "On the third day of Christmas\nMy true love sent to me:\nThree french hens\nTwo turtle doves and\nA partridge in a pear tree.\n\n" +
                       "On the fourth day of Christmas\nMy true love sent to me:\nFour calling birds\nThree french hens\nTwo turtle doves and\nA partridge in a pear tree.\n\n" +
@@ -113,10 +131,20 @@ public class ChristmasSongTest
         var getSong = _song.GetSong();
 
         //Assert
-        getSong.Should().Be(strophes);
+        getSong.Should().Be(content);
     }
     
-    
+    [Fact]
+    public void Si_Estrofa_No_Existe_Debe_Devolver_Excepcion()
+    {
+        //Arrange
+        var song = () => _song;
+        //Act
+        var getSong = _song.GetContentStrophe(13);
+
+        //Assert
+        song.Should().ThrowExactly<Exception>();
+    }
 }
 
 public class Song
