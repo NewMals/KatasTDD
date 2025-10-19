@@ -45,19 +45,6 @@ public class ChristmasSongTest
     }
     
     [Fact]
-    public void Validar_Contenido_Tercera_Linea_Segunda_Estrofa()
-    {
-        //Arrange
-        var song = new Song();
-        
-        //Act
-        var thirdLine = song.GetStropheThirdLine();
-
-        //Assert
-        thirdLine.Should().Be("A partridge in a pear tree.");
-    }
-    
-    [Fact]
     public void Validar_Contenido_Primera_Estrofa()
     {
         //Arrange
@@ -95,6 +82,20 @@ public class ChristmasSongTest
         //Assert
         getSong.Should().Be("On the first day of Christmas\nMy true love sent to me:\nA partridge in a pear tree.\n");
     }
+    
+    [Theory]
+    [InlineData(9, "On the ninth day of Christmas,\nMy true love sent to me:\nNine ladies dancing\nEight maids a-milking\nSeven swans a-swimming\nSix geese a-laying\nFive golden rings\nFour calling birds\nThree french hens\nTwo turtle doves and\nA partridge in a pear tree.")]
+    public void Validar_Contenido_Estrofa(int strophe, string content)
+    {
+        //Arrange
+        var song = new Song();
+        
+        //Act
+        var contentStrophe = song.GetContentStrophe(strophe);
+
+        //Assert
+        contentStrophe.Should().Be(content);
+    }
 }
 
 public class Song
@@ -115,7 +116,7 @@ public class Song
         { 12, "twelfth" }
     };
 
-    private List<string> _linesSong =
+    private readonly List<string> _linesSong =
     [
         "A partridge in a pear tree.",
         "Two turtle doves and",
@@ -130,14 +131,10 @@ public class Song
         "Eleven pipers piping",
         "Twelve drummers drumming"
     ];
-        
-    
     
     public string GetStropheFirstLine(int strophe) => $"On the {_daysNumbers.First(f => f.Key == strophe ).Value} day of Christmas";
     
     public string GetStropheSecondLine() => "My true love sent to me:";
-
-    public string GetStropheThirdLine() => "A partridge in a pear tree.";
 
     public string GetContentStrophe(int strophe)
     {
