@@ -75,22 +75,19 @@ public class CalculateStatsTest
         elements.Should().Be(elementsExpected);
     }
     
-    [Fact]
-    public void Test()
+    [Theory]
+    [InlineData(new int[]  { -125, -4578, 0, 56115, 2, 107, 99, 511, 1300, 4 }, $"Valor minimo: -4578\n\nValor maximo: 56115\n\nCantidad de elementos: 10\n\nValor promedio: 5344")]
+    [InlineData(new int[] {0}, $"Valor minimo: 0\n\nValor maximo: 0\n\nCantidad de elementos: 1\n\nValor promedio: 0")]
+    public void Validar_Estadisticas_Secuencia(int[] sequence, string statsExpected)
     {
         //Arrange
-        var sequence = new int[] { -125, -4578, 0, 56115, 2, 107, 99, 511, 1300, 4 };
-        var calculateStats = new CalculateStats(sequence.ToList()); 
-        var stats = $"Valor minimo: -4578\n\n" +
-                    $"Valor maximo: 56115\n\n" +
-                    $"Cantidad de elementos: 10\n\n" +
-                    $"Valor promedio: 5344";
+        var calculateStats = new CalculateStats(sequence.ToList());
 
         //Act
         var getStats = calculateStats.GetStas();
         
         //Asserts
-        getStats.Should().Be(stats);
+        getStats.Should().Be(statsExpected);
     }
 }
 

@@ -9,10 +9,17 @@
 - [X] Si se envian 6,9,15,-2, 92, 11, debe devolver el promedio 21.833333
 - [X] Si se envian 6,9,15,-2, 92, 11, debe devolver la cantidad de elementos 6
 - [X] Si se envian 5, debe devolver la cantidad de elementos 1
-- [ ] Devolver las estadisticas de la siguiente secuencia [-125,-4578, 0, 56115, 2, 107, 99, 511, 1300, 4]
+- [X] Devolver las estadisticas de la siguiente secuencia [-125,-4578, 0, 56115, 2, 107, 99, 511, 1300, 4]
 ```
 Valor minimo: -4578
 Valor maximo: 56115
 Cantidad de elementos: 10
 Valor promedio: 5344
+```
+- [X] Devolver las estadisticas de la siguiente secuencia [0]
+```
+Valor minimo: 0
+Valor maximo: 0
+Cantidad de elementos: 1
+Valor promedio: 0
 ```
