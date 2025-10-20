@@ -18,7 +18,7 @@ public class CalculateStatsTest
     [Theory]
     [InlineData(new int[] {4, 8}, 4)]
     [InlineData(new int[] {-1, 6}, -1)]
-    public void Validar_Valor_Minimo_Secuencia(int[] sequence, int valueMinExpect)
+    public void Validar_Valor_Minimo_Secuencia(int[] sequence, int valueMinExpected)
     {
         //Arrange
         var calculateStats = new CalculateStats(sequence.ToList()); 
@@ -27,13 +27,13 @@ public class CalculateStatsTest
         var valueMin = calculateStats.GetValueMin();
         
         //Asserts
-        valueMin.Should().Be(valueMinExpect);
+        valueMin.Should().Be(valueMinExpected);
     }
     
     [Theory]
     [InlineData(new int[] {20, 11}, 20)]
     [InlineData(new int[] {13, -6}, 13)]
-    public void Validar_Valor_Maximo_Secuencia(int[] sequence, int valueMaxExpect)
+    public void Validar_Valor_Maximo_Secuencia(int[] sequence, int valueMaxExpected)
     {
         //Arrange
         var calculateStats = new CalculateStats(sequence.ToList()); 
@@ -42,13 +42,13 @@ public class CalculateStatsTest
         var valueMax = calculateStats.GetValueMax();
         
         //Asserts
-        valueMax.Should().Be(valueMaxExpect);
+        valueMax.Should().Be(valueMaxExpected);
     }
     
     [Theory]
     [InlineData(new int[] {9, 17}, 13)]
     [InlineData(new int[] {6, 9, 15, -2, 92, 11}, 21.833333)]
-    public void Validar_Valor_Promedio_Secuencia(int[] sequence, int valueAverageExpect)
+    public void Validar_Valor_Promedio_Secuencia(int[] sequence, int valueAverageExpected)
     {
         //Arrange
         var calculateStats = new CalculateStats(sequence.ToList()); 
@@ -57,21 +57,22 @@ public class CalculateStatsTest
         var valueAverage = calculateStats.GetValueAverage();
         
         //Asserts
-        valueAverage.Should().Be(valueAverageExpect);
+        valueAverage.Should().Be(valueAverageExpected);
     }
     
-    [Fact]
-    public void Test()
+    [Theory]
+    [InlineData(new int[] {6, 9, 15, -2, 92, 11}, 6)]
+    [InlineData(new int[] {5}, 1)]
+    public void Validar_Cantidad_Elementos_Secuencia(int[] sequence, int elementsExpected)
     {
         //Arrange
-        var sequence = new int[] { 6, 9, 15, -2, 92, 11 };
         var calculateStats = new CalculateStats(sequence.ToList()); 
 
         //Act
         var elements = calculateStats.GetElements();
         
         //Asserts
-        elements.Should().Be(6);
+        elements.Should().Be(elementsExpected);
     }
 }
 
