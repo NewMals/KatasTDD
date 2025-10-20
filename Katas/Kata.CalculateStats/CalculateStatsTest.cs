@@ -83,8 +83,8 @@ public class CalculateStatsTest
         var calculateStats = new CalculateStats(sequence.ToList()); 
         var stats = $"Valor minimo: -4578\n\n" +
                     $"Valor maximo: 56115\n\n" +
-                    $"Cantidad de elementos: 9\n\n" +
-                    $"Valor promedio: 5347.5";
+                    $"Cantidad de elementos: 10\n\n" +
+                    $"Valor promedio: 5344";
 
         //Act
         var getStats = calculateStats.GetStas();
@@ -113,11 +113,10 @@ public class CalculateStats
 
     public int GetElements() => Sequence.Count;
 
-    public string GetStas()
-    {
-        return $"Valor minimo: -4578\n\n" +
-            $"Valor maximo: 56115\n\n" +
-            $"Cantidad de elementos: 9\n\n" +
-            $"Valor promedio: 5347.5";
-    }
+    public string GetStas() =>
+        $"Valor minimo: {GetValueMin()}\n\n" +
+        $"Valor maximo: {GetValueMax()}\n\n" +
+        $"Cantidad de elementos: {GetElements()}\n\n" +
+        $"Valor promedio: {GetValueAverage()}";
+    
 }

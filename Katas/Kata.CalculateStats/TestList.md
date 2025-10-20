@@ -13,6 +13,6 @@
 ```
 Valor minimo: -4578
 Valor maximo: 56115
-Cantidad de elementos: 9
-Valor promedio: 5347.5
+Cantidad de elementos: 10
+Valor promedio: 5344
 ```
