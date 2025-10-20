@@ -44,6 +44,20 @@ public class CalculateStatsTest
         //Asserts
         valueMax.Should().Be(valueMaxExpect);
     }
+    
+    [Fact]
+    public void Test()
+    {
+        //Arrange
+        var sequence = new int[] { 9, 17 };
+        var calculateStats = new CalculateStats(sequence.ToList()); 
+
+        //Act
+        var valueAverage = calculateStats.GetValueAverage();
+        
+        //Asserts
+        valueAverage.Should().Be(13);
+    }
 }
 
 public class CalculateStats
@@ -60,4 +74,9 @@ public class CalculateStats
     public int GetValueMin() => Sequence.Min();
 
     public object GetValueMax() => Sequence.Max();
+
+    public object GetValueAverage()
+    {
+        throw new NotImplementedException();
+    }
 }
