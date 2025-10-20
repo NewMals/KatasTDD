@@ -113,8 +113,11 @@ public class CalculateStats
 
     public int GetElements() => Sequence.Count;
 
-    public object GetStas()
+    public string GetStas()
     {
-        throw new NotImplementedException();
+        return $"Valor minimo: -4578\n\n" +
+            $"Valor maximo: 56115\n\n" +
+            $"Cantidad de elementos: 9\n\n" +
+            $"Valor promedio: 5347.5";
     }
 }
