@@ -45,18 +45,19 @@ public class CalculateStatsTest
         valueMax.Should().Be(valueMaxExpect);
     }
     
-    [Fact]
-    public void Test()
+    [Theory]
+    [InlineData(new int[] {9, 17}, 13)]
+    [InlineData(new int[] {6, 9, 15, -2, 92, 11}, 21.833333)]
+    public void Validar_Valor_Promedio_Secuencia(int[] sequence, int valueAverageExpect)
     {
         //Arrange
-        var sequence = new int[] { 9, 17 };
         var calculateStats = new CalculateStats(sequence.ToList()); 
 
         //Act
         var valueAverage = calculateStats.GetValueAverage();
         
         //Asserts
-        valueAverage.Should().Be(13);
+        valueAverage.Should().Be(valueAverageExpect);
     }
 }
 
@@ -75,5 +76,5 @@ public class CalculateStats
 
     public int GetValueMax() => Sequence.Max();
 
-    public double GetValueAverage() => Sequence.Average();
+    public double GetValueAverage() => Math.Round(Sequence.Average());
 }
