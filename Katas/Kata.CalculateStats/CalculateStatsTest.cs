@@ -73,7 +73,7 @@ public class CalculateStats
 
     public int GetValueMin() => Sequence.Min();
 
-    public object GetValueMax() => Sequence.Max();
+    public int GetValueMax() => Sequence.Max();
 
-    public object GetValueAverage() => 13;
+    public double GetValueAverage() => Sequence.Average();
 }
