@@ -92,8 +92,5 @@ public class CalculateStats
 
     public double GetValueAverage() => Math.Round(Sequence.Average());
 
-    public object GetElements()
-    {
-        return 6;
-    }
+    public int GetElements() => Sequence.Count;
 }
