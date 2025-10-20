@@ -59,6 +59,20 @@ public class CalculateStatsTest
         //Asserts
         valueAverage.Should().Be(valueAverageExpect);
     }
+    
+    [Fact]
+    public void Test()
+    {
+        //Arrange
+        var sequence = new int[] { 6, 9, 15, -2, 92, 11 };
+        var calculateStats = new CalculateStats(sequence.ToList()); 
+
+        //Act
+        var elements = calculateStats.GetElements();
+        
+        //Asserts
+        elements.Should().Be(6);
+    }
 }
 
 public class CalculateStats
@@ -77,4 +91,9 @@ public class CalculateStats
     public int GetValueMax() => Sequence.Max();
 
     public double GetValueAverage() => Math.Round(Sequence.Average());
+
+    public object GetElements()
+    {
+        throw new NotImplementedException();
+    }
 }
