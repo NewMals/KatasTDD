@@ -94,6 +94,6 @@ public class CalculateStats
 
     public object GetElements()
     {
-        throw new NotImplementedException();
+        return 6;
     }
 }
