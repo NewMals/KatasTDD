@@ -7,12 +7,8 @@
 - [X] Si el primer numero es 13 y el segundo numero es -6, debe devolve el valor maximo 13
 - [X] Si el primer numero es 9 y el segundo numero es 17, debe devolver el promedio 13
 - [X] Si se envian 6,9,15,-2, 92, 11, debe devolver el promedio 21.833333
-- [ ] Si se envian 6,9,15,-2, 92, 11, debe devolver la cantidad de elementos 6
-- [ ] Si se envian 5, debe devolver la cantidad de elementos 1
-- [ ] Si la secuencia de enteros no esta vacia, debe devolver el valor minimo
-- [ ] Si la secuencia de enteros no esta vacia, debe devolver el valor maximo
-- [ ] Si la secuencia de enteros no esta vacia, debe devolver la cantidad de elementos
-- [ ] Si la secuencia de enteros no esta vacia, debe devolver el valor promedio
+- [X] Si se envian 6,9,15,-2, 92, 11, debe devolver la cantidad de elementos 6
+- [X] Si se envian 5, debe devolver la cantidad de elementos 1
 - [ ] Devolver las estadisticas de la siguiente secuencia [-125,-4578, 0, 56115, 2, 107, 99, 511, 1300, 4]
 ```
 Valor minimo: -4578

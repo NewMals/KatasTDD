@@ -74,6 +74,24 @@ public class CalculateStatsTest
         //Asserts
         elements.Should().Be(elementsExpected);
     }
+    
+    [Fact]
+    public void Test()
+    {
+        //Arrange
+        var sequence = new int[] { -125, -4578, 0, 56115, 2, 107, 99, 511, 1300, 4 };
+        var calculateStats = new CalculateStats(sequence.ToList()); 
+        var stats = $"Valor minimo: -4578\n\n" +
+                    $"Valor maximo: 56115\n\n" +
+                    $"Cantidad de elementos: 9\n\n" +
+                    $"Valor promedio: 5347.5";
+
+        //Act
+        var getStats = calculateStats.GetStas();
+        
+        //Asserts
+        getStats.Should().Be(stats);
+    }
 }
 
 public class CalculateStats
@@ -94,4 +112,9 @@ public class CalculateStats
     public double GetValueAverage() => Math.Round(Sequence.Average());
 
     public int GetElements() => Sequence.Count;
+
+    public object GetStas()
+    {
+        throw new NotImplementedException();
+    }
 }
