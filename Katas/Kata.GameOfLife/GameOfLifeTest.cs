@@ -14,6 +14,22 @@ public class GameOfLifeTest
         
         game.Board[0,0].Should().BeFalse();
     }
+    
+    [Fact]
+    public void Si_UnaCelulaVivaConUnVecino_Debe_Morir()
+    {
+        var board = new[,] 
+        {
+            { false, false, false },
+            { false, true, true },
+            { false, false, false }
+        };
+        var game = new GameOfLife(board);
+        
+        game.NextGen();
+        
+        game.Board[1,1].Should().BeFalse();
+    }
 }
 
 public class GameOfLife(bool[,] board)
