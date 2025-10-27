@@ -35,10 +35,18 @@ public class GameOfLifeTest
 public class GameOfLife(bool[,] board)
 {
     public bool[,] Board { get; private set; } = board;
-
-
+    
     public void NextGen()
     {
-        Board[0, 0] = false;
+        for (int row = 0; row < Board.GetLength(0); row++)
+        {
+            for (int colum = 0; colum < Board.GetLength(1); colum++)
+            {
+                if(Board[row, colum])
+                    Board[row, colum] = false;
+            }
+        }
+        
+        
     }
 };
