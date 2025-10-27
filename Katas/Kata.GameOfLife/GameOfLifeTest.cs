@@ -28,6 +28,6 @@ public class GameOfLife
 
     public void NextGen()
     {
-        throw new NotImplementedException();
+        Board[0, 0] = false;
     }
 };
