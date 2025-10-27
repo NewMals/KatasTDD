@@ -52,27 +52,6 @@ public class GameOfLife(bool[,] board)
 {
     public bool[,] Board { get; private set; } = board;
     
-    public void NextGen()
-    {
-        var rows = Board.GetLength(0);
-        var cols = Board.GetLength(1);
-        var currentBoard = new bool[rows, cols];
-        
-        for (var row = 0; row < rows; row++)
-        {
-            for (var col = 0; col < cols; col++)
-            {
-                var neighborsCell = CountNeighborsCell(row, col);
-                if (Board[row, col])
-                    currentBoard[row, col] = neighborsCell > 1;
-                else
-                    Board[row, col] = false;
-            }
-        }
-
-        Board = currentBoard;
-    }
-    
     private int CountNeighborsCell(int row, int col)
     {
         var count = 0;
@@ -96,5 +75,26 @@ public class GameOfLife(bool[,] board)
         }
 
         return count;
+    }
+    
+    public void NextGen()
+    {
+        var rows = Board.GetLength(0);
+        var cols = Board.GetLength(1);
+        var currentBoard = new bool[rows, cols];
+        
+        for (var row = 0; row < rows; row++)
+        {
+            for (var col = 0; col < cols; col++)
+            {
+                var neighborsCell = CountNeighborsCell(row, col);
+                if (Board[row, col])
+                    currentBoard[row, col] = neighborsCell > 1;
+                else
+                    Board[row, col] = false;
+            }
+        }
+
+        Board = currentBoard;
     }
 };
