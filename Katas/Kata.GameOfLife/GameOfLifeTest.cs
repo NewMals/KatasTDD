@@ -16,14 +16,9 @@ public class GameOfLifeTest
     }
 }
 
-public class GameOfLife
+public class GameOfLife(bool[,] board)
 {
-    public bool[,] Board { get; private set; }
-    
-    public GameOfLife(bool[,] board)
-    {
-        Board = board;
-    }
+    public bool[,] Board { get; private set; } = board;
 
 
     public void NextGen()
