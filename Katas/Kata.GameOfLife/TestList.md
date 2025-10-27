@@ -1,7 +1,7 @@
-- [X] Una célula viva sin vecinos muere (regla de infrapoblación). 
-- [X] Una célula viva con un solo vecino muere (sigue siendo infrapoblación). 
-- [ ] Una célula viva con dos vecinos sobrevive. 
-- [ ] Una célula viva con tres vecinos sobrevive. 
-- [ ] Una célula viva con más de tres vecinos muere (sobrepoblación). 
-- [ ] Una célula muerta con exactamente tres vecinos vivos nace (reproducción). 
-- [ ] Una célula muerta con menos o más de tres vecinos sigue muerta.
+- [X] Una célula viva sin vecinas muere (regla de infrapoblación). 
+- [X] Una célula viva con una solo vecina muere (sigue siendo infrapoblación). 
+- [ ] Una célula viva con dos vecinas sobrevive. 
+- [ ] Una célula viva con tres vecinas sobrevive. 
+- [ ] Una célula viva con más de tres vecinas muere (sobrepoblación). 
+- [ ] Una célula muerta con exactamente tres vecinas vivos nace (reproducción). 
+- [ ] Una célula muerta con menos o más de tres vecinas sigue muerta.
