@@ -2,7 +2,7 @@ namespace Kata.CalculateStats;
 
 public class CalculateStats
 {
-    private List<int> Sequence { get; set; }
+    private List<int> Sequence { get; }
     public CalculateStats(List<int>? sequence)
     {
         if (sequence == null || sequence.Count == 0)
