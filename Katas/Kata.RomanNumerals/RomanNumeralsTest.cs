@@ -57,14 +57,18 @@ public class RomanNumeralsTest
         roman.Should().Be("IX");
     }
     
-    [Fact]
-    public void Si_ElNumeroArabicoEs10_Debe_RetornarX()
+    [Theory]
+    [InlineData(1, "I")]
+    [InlineData(5, "V")]
+    [InlineData(10, "X")]
+    [InlineData(50, "L")]
+    public void Si_ElNumeroArabicoEstaDefinido_Debe_RetornarLaLetraDeacuerdoAsuRegla(int arabicNumber, string romanNumber)
     {
         var romanNumeral = new RomanNumeral();
 
-        var roman = RomanNumeral.Convert(10);
+        var roman = RomanNumeral.Convert(arabicNumber);
 
-        roman.Should().Be("X");
+        roman.Should().Be(romanNumber);
     }
 }
 
