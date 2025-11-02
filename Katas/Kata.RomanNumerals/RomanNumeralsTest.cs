@@ -53,12 +53,18 @@ public class RomanNumeral
     public static string Convert(int arabicNumber)
     {
         var romanNumeral = "";
-        
-        if(arabicNumber == 4)
-            return "IV";
-        
-        if(arabicNumber == 5)
-            return "V";
+
+        if (arabicNumber == 4)
+        {
+            romanNumeral = "IV";
+            arabicNumber -= 4;
+        }
+
+        if (arabicNumber >= 5)
+        {
+            romanNumeral = "V";
+            arabicNumber -= 5;
+        }
         
         for (var i = 0; i < arabicNumber; i++)
         {
