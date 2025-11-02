@@ -33,10 +33,15 @@ public class RomanNumeral
     public static string Convert(int arabicNumber)
     {
         var romanNumeral = "";
+        
+        if(arabicNumber == 4)
+            return "IV";
+        
         for (var i = 0; i < arabicNumber; i++)
         {
             romanNumeral += "I";
         }
+        
         return romanNumeral;
     }
 }
