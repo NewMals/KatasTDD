@@ -39,6 +39,11 @@ public class RomanNumeral
 {
     public static string Convert(int arabicNumber)
     {
-        return arabicNumber == 2 ? "II" : "I";
+        var romanNumeral = "";
+        for (var i = 0; i < arabicNumber; i++)
+        {
+            romanNumeral += "I";
+        }
+        return romanNumeral;
     }
 }
