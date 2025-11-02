@@ -34,6 +34,7 @@ public class RomanNumeralsTest
     [Theory]
     [InlineData(4, "IV")]
     [InlineData(9, "IX")]
+    [InlineData(49, "XLIX")]
     public void Si_ElNumeroArabicoEsUnValorAnteriorAUnaNuevaRegla_Debe_RetornarElvalorDeLaReglaEsperada(int arabicNumber, string romanNumber)
     {
         var roman = RomanNumeral.Convert(arabicNumber);
