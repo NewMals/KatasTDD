@@ -1,4 +1,4 @@
-- [ ] Si el numero es 1 debe devolver "I"
+- [X] Si el numero es 1 debe devolver "I"
 - [ ] Si el numero es 2 debe devolver "II"
 - [ ] Si el numero es 3 debe devolver "III"
 - [ ] Si el numero es 4 debe devolver "IV"

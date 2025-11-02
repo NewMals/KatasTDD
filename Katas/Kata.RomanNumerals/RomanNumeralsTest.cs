@@ -9,7 +9,7 @@ public class RomanNumeralsTest
     {
         var romanNumeral = new RomanNumeral();
 
-        var roman = romanNumeral.Convert(1);
+        var roman = RomanNumeral.Convert(1);
 
         roman.Should().Be("I");
     }
@@ -17,7 +17,7 @@ public class RomanNumeralsTest
 
 public class RomanNumeral
 {
-    public String Convert(int i)
+    public static string Convert(int i)
     {
         return "I";
     }
