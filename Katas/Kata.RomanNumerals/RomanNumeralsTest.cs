@@ -26,6 +26,16 @@ public class RomanNumeralsTest
 
         roman.Should().Be("IV");
     }
+    
+    [Fact]
+    public void Si_ElNumeroArabicoEs5_Debe_RetornarV()
+    {
+        var romanNumeral = new RomanNumeral();
+
+        var roman = RomanNumeral.Convert(5);
+
+        roman.Should().Be("V");
+    }
 }
 
 public class RomanNumeral
@@ -37,6 +47,7 @@ public class RomanNumeral
         if(arabicNumber == 4)
             return "IV";
         
+
         for (var i = 0; i < arabicNumber; i++)
         {
             romanNumeral += "I";
