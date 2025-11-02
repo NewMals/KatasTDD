@@ -4,5 +4,6 @@
 - [X] Si el numero es 4 debe devolver "IV"
 - [X] Si el numero es 5 debe devolver "V"
 - [X] Si el numero es 6 debe devolver "VI"
-- [ ] Si el numero es 9 debe devolver "IX"
-- [ ] Si el numero es 10 debe devolver "X"
+- [X] Si el numero es 9 debe devolver "IX"
+- [X] Si el numero es 10 debe devolver "X"
+- [ ] Si el numero es 49 debe devolver "XLIX"

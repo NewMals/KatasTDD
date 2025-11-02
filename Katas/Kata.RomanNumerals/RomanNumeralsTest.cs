@@ -74,21 +74,20 @@ public class RomanNumeral
     {
         var romanNumeral = "";
 
-        foreach (var roman in Enum.GetValues<RomanToNumeral>().OrderByDescending(x => x))
+        foreach (var roman in TypeRomanNumeralsOrderDescending())
         {
-            if (arabicNumber >= (int)roman)
+            while (arabicNumber >= (int)roman)
             {
                 romanNumeral += roman.ToString();
                 arabicNumber -= (int)roman;
             }
         }
-        
-        for (var i = 0; i < arabicNumber; i++)
-        {
-            romanNumeral += "I";
-        }
-        
         return romanNumeral;
+    }
+
+    private static IOrderedEnumerable<RomanToNumeral> TypeRomanNumeralsOrderDescending()
+    {
+        return Enum.GetValues<RomanToNumeral>().OrderByDescending(x => x);
     }
 }
 
@@ -98,4 +97,5 @@ public enum RomanToNumeral
     IX = 9,
     V = 5,
     IV = 4,
+    I = 1
 }
