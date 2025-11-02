@@ -13,11 +13,21 @@ public class RomanNumeralsTest
 
         roman.Should().Be("I");
     }
+    
+    [Fact]
+    public void Si_ElNumeroArabicoEs2_Debe_RetornarII()
+    {
+        var romanNumeral = new RomanNumeral();
+
+        var roman = RomanNumeral.Convert(2);
+
+        roman.Should().Be("II");
+    }
 }
 
 public class RomanNumeral
 {
-    public static string Convert(int i)
+    public static string Convert(int arabicNumber)
     {
         return "I";
     }
