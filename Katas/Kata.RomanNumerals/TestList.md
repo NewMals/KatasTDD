@@ -1,5 +1,5 @@
 - [X] Si el numero es 1 debe devolver "I"
-- [ ] Si el numero es 2 debe devolver "II"
+- [X] Si el numero es 2 debe devolver "II"
 - [ ] Si el numero es 3 debe devolver "III"
 - [ ] Si el numero es 4 debe devolver "IV"
 - [ ] Si el numero es 5 debe devolver "V"

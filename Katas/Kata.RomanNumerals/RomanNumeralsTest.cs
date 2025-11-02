@@ -23,6 +23,16 @@ public class RomanNumeralsTest
 
         roman.Should().Be("II");
     }
+    
+    [Fact]
+    public void Si_ElNumeroArabicoEs3_Debe_RetornarIII()
+    {
+        var romanNumeral = new RomanNumeral();
+
+        var roman = RomanNumeral.Convert(3);
+
+        roman.Should().Be("III");
+    }
 }
 
 public class RomanNumeral
