@@ -56,6 +56,16 @@ public class RomanNumeralsTest
 
         roman.Should().Be("IX");
     }
+    
+    [Fact]
+    public void Si_ElNumeroArabicoEs10_Debe_RetornarX()
+    {
+        var romanNumeral = new RomanNumeral();
+
+        var roman = RomanNumeral.Convert(10);
+
+        roman.Should().Be("X");
+    }
 }
 
 public class RomanNumeral
