@@ -47,7 +47,9 @@ public class RomanNumeral
         if(arabicNumber == 4)
             return "IV";
         
-
+        if(arabicNumber == 5)
+            return "V";
+        
         for (var i = 0; i < arabicNumber; i++)
         {
             romanNumeral += "I";
