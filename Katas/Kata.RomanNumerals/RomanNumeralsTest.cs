@@ -10,8 +10,6 @@ public class RomanNumeralsTest
     [InlineData(3, "III")]
     public void Si_ElNumeroArabicoEsMenorA4_Debe_RetornarLaCantidadI(int arabicNumber, string romanNumber)
     {
-        var romanNumeral = new RomanNumeral();
-
         var roman = RomanNumeral.Convert(arabicNumber);
 
         roman.Should().Be(romanNumber);
@@ -20,41 +18,27 @@ public class RomanNumeralsTest
     [Fact]
     public void Si_ElNumeroArabicoEs4_Debe_RetornarIV()
     {
-        var romanNumeral = new RomanNumeral();
-
         var roman = RomanNumeral.Convert(4);
 
         roman.Should().Be("IV");
     }
     
     [Fact]
-    public void Si_ElNumeroArabicoEs5_Debe_RetornarV()
-    {
-        var romanNumeral = new RomanNumeral();
-
-        var roman = RomanNumeral.Convert(5);
-
-        roman.Should().Be("V");
-    }
-    
-    [Fact]
     public void Si_ElNumeroArabicoEs6_Debe_RetornarVI()
     {
-        var romanNumeral = new RomanNumeral();
-
         var roman = RomanNumeral.Convert(6);
 
         roman.Should().Be("VI");
     }
     
-    [Fact]
-    public void Si_ElNumeroArabicoEs9_Debe_RetornarIX()
+    [Theory]
+    [InlineData(4, "IV")]
+    [InlineData(9, "IX")]
+    public void Si_ElNumeroArabicoEsUnValorAnteriorAUnaNuevaRegla_Debe_RetornarElvalorDeLaReglaEsperada(int arabicNumber, string romanNumber)
     {
-        var romanNumeral = new RomanNumeral();
+        var roman = RomanNumeral.Convert(arabicNumber);
 
-        var roman = RomanNumeral.Convert(9);
-
-        roman.Should().Be("IX");
+        roman.Should().Be(romanNumber);
     }
     
     [Theory]
@@ -64,8 +48,6 @@ public class RomanNumeralsTest
     [InlineData(50, "L")]
     public void Si_ElNumeroArabicoEstaDefinido_Debe_RetornarLaLetraDeacuerdoAsuRegla(int arabicNumber, string romanNumber)
     {
-        var romanNumeral = new RomanNumeral();
-
         var roman = RomanNumeral.Convert(arabicNumber);
 
         roman.Should().Be(romanNumber);
@@ -97,6 +79,7 @@ public class RomanNumeral
 
 public enum RomanToNumeral
 {
+    L = 50,
     X = 10,
     IX = 9,
     V = 5,
