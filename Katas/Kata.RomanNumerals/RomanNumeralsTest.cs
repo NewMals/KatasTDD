@@ -81,6 +81,7 @@ public class RomanNumeral
 public enum RomanToNumeral
 {
     L = 50,
+    XL = 40,
     X = 10,
     IX = 9,
     V = 5,
