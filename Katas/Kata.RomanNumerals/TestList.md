@@ -2,7 +2,7 @@
 - [X] Si el numero es 2 debe devolver "II"
 - [X] Si el numero es 3 debe devolver "III"
 - [X] Si el numero es 4 debe devolver "IV"
-- [ ] Si el numero es 5 debe devolver "V"
+- [X] Si el numero es 5 debe devolver "V"
 - [ ] Si el numero es 6 debe devolver "VI"
 - [ ] Si el numero es 6 debe devolver "VII"
 - [ ] Si el numero es 8 debe devolver "VIII"

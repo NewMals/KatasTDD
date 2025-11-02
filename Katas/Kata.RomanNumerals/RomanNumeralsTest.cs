@@ -36,6 +36,16 @@ public class RomanNumeralsTest
 
         roman.Should().Be("V");
     }
+    
+    [Fact]
+    public void Si_ElNumeroArabicoEs6_Debe_RetornarVI()
+    {
+        var romanNumeral = new RomanNumeral();
+
+        var roman = RomanNumeral.Convert(6);
+
+        roman.Should().Be("VI");
+    }
 }
 
 public class RomanNumeral
