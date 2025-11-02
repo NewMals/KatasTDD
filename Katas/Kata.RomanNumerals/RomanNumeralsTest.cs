@@ -4,34 +4,17 @@ namespace Kata.RomanNumerals;
 
 public class RomanNumeralsTest
 {
-    [Fact]
-    public void Si_ElNumeroArabicoEs1_Debe_RetornarI()
+    [Theory]
+    [InlineData(1, "I")]
+    [InlineData(2, "II")]
+    [InlineData(3, "III")]
+    public void Si_ElNumeroArabicoEsMenorA4_Debe_RetornarLaCantidadI(int arabicNumber, string romanNumber)
     {
         var romanNumeral = new RomanNumeral();
 
-        var roman = RomanNumeral.Convert(1);
+        var roman = RomanNumeral.Convert(arabicNumber);
 
-        roman.Should().Be("I");
-    }
-    
-    [Fact]
-    public void Si_ElNumeroArabicoEs2_Debe_RetornarII()
-    {
-        var romanNumeral = new RomanNumeral();
-
-        var roman = RomanNumeral.Convert(2);
-
-        roman.Should().Be("II");
-    }
-    
-    [Fact]
-    public void Si_ElNumeroArabicoEs3_Debe_RetornarIII()
-    {
-        var romanNumeral = new RomanNumeral();
-
-        var roman = RomanNumeral.Convert(3);
-
-        roman.Should().Be("III");
+        roman.Should().Be(romanNumber);
     }
 }
 
