@@ -29,9 +29,6 @@ public class RomanNumeral
 {
     public static string Convert(int arabicNumber)
     {
-        if (arabicNumber == 2) 
-            return "II";
-        
-        return "I";
+        return arabicNumber == 2 ? "II" : "I";
     }
 }
