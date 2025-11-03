@@ -57,4 +57,12 @@ public class RomanNumeralsTest
 
         roman.Should().Be(romanNumber);
     }
+
+    [Fact]
+    public void Si_ElNumeroEs0_Debe_RetornarUnaExcepcion()
+    {
+        var roman = () => RomanNumeral.Convert(0);
+
+        roman.Should().Throw<Exception>();
+    }
 }
