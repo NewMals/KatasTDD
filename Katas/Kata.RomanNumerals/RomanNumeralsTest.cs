@@ -65,4 +65,12 @@ public class RomanNumeralsTest
 
         roman.Should().Throw<Exception>();
     }
+    
+    [Fact]
+    public void Si_ElNumeroEsMayorA3999_Debe_RetornarUnaExcepcion()
+    {
+        var roman = () => RomanNumeral.Convert(3999);
+
+        roman.Should().Throw<Exception>();
+    }
 }
