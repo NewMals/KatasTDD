@@ -16,28 +16,6 @@ public class RomanNumeralsTest
     }
     
     [Theory]
-    [InlineData(6, "VI")]
-    [InlineData(11, "XI")]
-    [InlineData(51, "LI")]
-    public void Si_ElNumeroArabicoEsUnValorDespuesAUnaNuevaRegla_Debe_RetornarElvalorDeLaReglaEsperada(int arabicNumber, string romanNumber)
-    {
-        var roman = RomanNumeral.Convert(arabicNumber);
-
-        roman.Should().Be(romanNumber);
-    }
-    
-    [Theory]
-    [InlineData(4, "IV")]
-    [InlineData(9, "IX")]
-    [InlineData(49, "XLIX")]
-    public void Si_ElNumeroArabicoEsUnValorAnteriorAUnaNuevaRegla_Debe_RetornarElvalorDeLaReglaEsperada(int arabicNumber, string romanNumber)
-    {
-        var roman = RomanNumeral.Convert(arabicNumber);
-
-        roman.Should().Be(romanNumber);
-    }
-    
-    [Theory]
     [InlineData(1, "I")]
     [InlineData(5, "V")]
     [InlineData(10, "X")]
@@ -51,41 +29,32 @@ public class RomanNumeralsTest
 
         roman.Should().Be(romanNumber);
     }
-}
-
-public class RomanNumeral
-{
-    public static string Convert(int arabicNumber)
+    
+    [Theory]
+    [InlineData(6, "VI")]
+    [InlineData(11, "XI")]
+    [InlineData(51, "LI")]
+    [InlineData(101, "CI")]
+    [InlineData(501, "DI")]
+    [InlineData(1001, "MI")]
+    public void Si_ElNumeroArabicoEsUnValorDespuesAUnaNuevaRegla_Debe_RetornarElvalorDeLaReglaEsperada(int arabicNumber, string romanNumber)
     {
-        var romanNumeral = "";
+        var roman = RomanNumeral.Convert(arabicNumber);
 
-        foreach (var roman in TypeRomanNumeralsOrderDescending())
-        {
-            while (arabicNumber >= (int)roman)
-            {
-                romanNumeral += roman.ToString();
-                arabicNumber -= (int)roman;
-            }
-        }
-        return romanNumeral;
+        roman.Should().Be(romanNumber);
     }
-
-    private static IOrderedEnumerable<RomanToNumeral> TypeRomanNumeralsOrderDescending()
+    
+    [Theory]
+    [InlineData(4, "IV")]
+    [InlineData(9, "IX")]
+    [InlineData(49, "XLIX")]
+    [InlineData(99, "XCIX")]
+    [InlineData(499, "CDXCIX")]
+    [InlineData(999, "CMXCIX")]
+    public void Si_ElNumeroArabicoEsUnValorAnteriorAUnaNuevaRegla_Debe_RetornarElvalorDeLaReglaEsperada(int arabicNumber, string romanNumber)
     {
-        return Enum.GetValues<RomanToNumeral>().OrderByDescending(x => x);
-    }
-}
+        var roman = RomanNumeral.Convert(arabicNumber);
 
-public enum RomanToNumeral
-{
-    M = 1000,
-    D = 500,
-    C = 100,
-    L = 50,
-    XL = 40,
-    X = 10,
-    IX = 9,
-    V = 5,
-    IV = 4,
-    I = 1
+        roman.Should().Be(romanNumber);
+    }
 }
