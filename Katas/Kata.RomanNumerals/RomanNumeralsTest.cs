@@ -43,6 +43,8 @@ public class RomanNumeralsTest
     [InlineData(10, "X")]
     [InlineData(50, "L")]
     [InlineData(100, "C")]
+    [InlineData(500, "D")]
+    [InlineData(1000, "M")]
     public void Si_ElNumeroArabicoEstaDefinido_Debe_RetornarLaLetraDeacuerdoAsuRegla(int arabicNumber, string romanNumber)
     {
         var roman = RomanNumeral.Convert(arabicNumber);
@@ -76,6 +78,8 @@ public class RomanNumeral
 
 public enum RomanToNumeral
 {
+    M = 1000,
+    D = 500,
     C = 100,
     L = 50,
     XL = 40,
