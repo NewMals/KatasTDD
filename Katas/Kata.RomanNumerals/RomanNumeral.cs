@@ -4,7 +4,7 @@ public class RomanNumeral
 {
     public static string Convert(int arabicNumber)
     {
-        if(arabicNumber == 0)
+        if(arabicNumber == 0 || arabicNumber > 3999)
             throw new Exception("El numero debe ser mayor a 0");
         
         var romanNumeral = "";

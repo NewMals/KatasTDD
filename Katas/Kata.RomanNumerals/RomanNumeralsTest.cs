@@ -8,7 +8,7 @@ public class RomanNumeralsTest
     [InlineData(1, "I")]
     [InlineData(2, "II")]
     [InlineData(3, "III")]
-    public void Si_ElNumeroArabicoEsMenorA4_Debe_RetornarLaCantidadI(int arabicNumber, string romanNumber)
+    public void Si_ElNumeroArabigoEsMenorA4_Debe_RetornarLaCantidadI(int arabicNumber, string romanNumber)
     {
         var roman = RomanNumeral.Convert(arabicNumber);
 
@@ -23,7 +23,7 @@ public class RomanNumeralsTest
     [InlineData(100, "C")]
     [InlineData(500, "D")]
     [InlineData(1000, "M")]
-    public void Si_ElNumeroArabicoEstaDefinido_Debe_RetornarLaLetraDeacuerdoAsuRegla(int arabicNumber, string romanNumber)
+    public void Si_ElNumeroArabigoEstaDefinido_Debe_RetornarLaLetraDeacuerdoAsuRegla(int arabicNumber, string romanNumber)
     {
         var roman = RomanNumeral.Convert(arabicNumber);
 
@@ -37,7 +37,7 @@ public class RomanNumeralsTest
     [InlineData(101, "CI")]
     [InlineData(501, "DI")]
     [InlineData(1001, "MI")]
-    public void Si_ElNumeroArabicoEsUnValorDespuesAUnaNuevaRegla_Debe_RetornarElvalorDeLaReglaEsperada(int arabicNumber, string romanNumber)
+    public void Si_ElNumeroArabigoEsUnValorDespuesAUnaNuevaRegla_Debe_RetornarElvalorDeLaReglaEsperada(int arabicNumber, string romanNumber)
     {
         var roman = RomanNumeral.Convert(arabicNumber);
 
@@ -51,7 +51,7 @@ public class RomanNumeralsTest
     [InlineData(99, "XCIX")]
     [InlineData(499, "CDXCIX")]
     [InlineData(999, "CMXCIX")]
-    public void Si_ElNumeroArabicoEsUnValorAnteriorAUnaNuevaRegla_Debe_RetornarElvalorDeLaReglaEsperada(int arabicNumber, string romanNumber)
+    public void Si_ElNumeroArabigoEsUnValorAnteriorAUnaNuevaRegla_Debe_RetornarElvalorDeLaReglaEsperada(int arabicNumber, string romanNumber)
     {
         var roman = RomanNumeral.Convert(arabicNumber);
 
@@ -69,7 +69,7 @@ public class RomanNumeralsTest
     [Fact]
     public void Si_ElNumeroEsMayorA3999_Debe_RetornarUnaExcepcion()
     {
-        var roman = () => RomanNumeral.Convert(3999);
+        var roman = () => RomanNumeral.Convert(4000);
 
         roman.Should().Throw<Exception>();
     }
