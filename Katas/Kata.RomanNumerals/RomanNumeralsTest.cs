@@ -14,21 +14,16 @@ public class RomanNumeralsTest
 
         roman.Should().Be(romanNumber);
     }
-
-    [Fact]
-    public void Si_ElNumeroArabicoEs4_Debe_RetornarIV()
-    {
-        var roman = RomanNumeral.Convert(4);
-
-        roman.Should().Be("IV");
-    }
     
-    [Fact]
-    public void Si_ElNumeroArabicoEs6_Debe_RetornarVI()
+    [Theory]
+    [InlineData(6, "VI")]
+    [InlineData(11, "XI")]
+    [InlineData(51, "LI")]
+    public void Si_ElNumeroArabicoEsUnValorDespuesAUnaNuevaRegla_Debe_RetornarElvalorDeLaReglaEsperada(int arabicNumber, string romanNumber)
     {
-        var roman = RomanNumeral.Convert(6);
+        var roman = RomanNumeral.Convert(arabicNumber);
 
-        roman.Should().Be("VI");
+        roman.Should().Be(romanNumber);
     }
     
     [Theory]
@@ -47,6 +42,7 @@ public class RomanNumeralsTest
     [InlineData(5, "V")]
     [InlineData(10, "X")]
     [InlineData(50, "L")]
+    [InlineData(100, "C")]
     public void Si_ElNumeroArabicoEstaDefinido_Debe_RetornarLaLetraDeacuerdoAsuRegla(int arabicNumber, string romanNumber)
     {
         var roman = RomanNumeral.Convert(arabicNumber);
@@ -80,6 +76,7 @@ public class RomanNumeral
 
 public enum RomanToNumeral
 {
+    C = 100,
     L = 50,
     XL = 40,
     X = 10,

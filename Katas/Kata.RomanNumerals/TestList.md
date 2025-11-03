@@ -7,4 +7,4 @@
 - [X] Si el numero es 9 debe devolver "IX"
 - [X] Si el numero es 10 debe devolver "X"
 - [X] Si el numero es 50 debe devolver "L"
-- [ ] Si el numero es 49 debe devolver "XLIX"
+- [X] Si el numero es 49 debe devolver "XLIX"
