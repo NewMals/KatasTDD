@@ -1,6 +1,6 @@
 namespace Kata.RomanNumerals;
 
-public enum RomanToNumeral
+public enum RomanNumeralRules
 {
     M = 1000,
     CM = 900,
