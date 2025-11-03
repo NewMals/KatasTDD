@@ -4,8 +4,8 @@ public class RomanNumeral
 {
     public static string Convert(int arabicNumber)
     {
-        if(arabicNumber == 0 || arabicNumber > 3999)
-            throw new Exception("El numero debe ser mayor a 0");
+        if(arabicNumber is < 1 or > 3999)
+            throw new Exception("El numero arábigo debe ser mayor a 0 y menor a 3999");
         
         var romanNumeral = "";
 

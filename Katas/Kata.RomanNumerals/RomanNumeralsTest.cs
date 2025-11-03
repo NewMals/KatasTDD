@@ -58,19 +58,14 @@ public class RomanNumeralsTest
         roman.Should().Be(romanNumber);
     }
 
-    [Fact]
-    public void Si_ElNumeroEs0_Debe_RetornarUnaExcepcion()
+    [Theory]
+    [InlineData(0)]
+    [InlineData(4000)]
+    [InlineData(-1)]
+    public void Si_ElNumeroEsMenorA1_O_MayorA3999_Debe_RetornarUnaExcepcion(int arabicNumber)
     {
-        var roman = () => RomanNumeral.Convert(0);
+        var roman = () => RomanNumeral.Convert(arabicNumber);
 
-        roman.Should().Throw<Exception>();
-    }
-    
-    [Fact]
-    public void Si_ElNumeroEsMayorA3999_Debe_RetornarUnaExcepcion()
-    {
-        var roman = () => RomanNumeral.Convert(4000);
-
-        roman.Should().Throw<Exception>();
+        roman.Should().Throw<Exception>().WithMessage("El numero arábigo debe ser mayor a 0 y menor a 3999");
     }
 }
