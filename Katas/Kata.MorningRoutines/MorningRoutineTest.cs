@@ -53,7 +53,7 @@ public class MorningRoutinesTest
     {
         var routineMorning = new MorningRoutine(new TimeSpan(7, 20, 15));
 
-        var activity = () => routineMorning.AddRoutine("Leer", new TimeSpan(7, 0, 0), new TimeSpan(7, 29, 59));
+        var activity = () => MorningRoutine.AddRoutine("Leer", new TimeSpan(7, 0, 0), new TimeSpan(7, 29, 59));
 
         activity.Should().ThrowExactly<Exception>().WithMessage("Para el horario de 07:00:00 a 07:29:59 existe la actividad Leer y estudiar");
     }
@@ -63,7 +63,7 @@ public class MorningRoutinesTest
     {
         var routineMorning = new MorningRoutine(new TimeSpan(7, 20, 15));
 
-        var newActivity = routineMorning.AddRoutine("Leer", new TimeSpan(7, 0, 0), new TimeSpan(7, 29, 59), true);
+        var newActivity = MorningRoutine.AddRoutine("Leer", new TimeSpan(7, 0, 0), new TimeSpan(7, 29, 59), true);
         
         newActivity.Should().Be("Actividad Leer ha sido creada");
     }
@@ -72,6 +72,8 @@ public class MorningRoutinesTest
     public void Si_SeAgregaLaActividad_Leer_Entre_0700_A_0729_Debe_MostrarActividad_Leer_YNo_LeerYEstudiar()
     {
         var routineMorning = new MorningRoutine(new TimeSpan(7, 20, 15));
+        var newActivity = MorningRoutine.AddRoutine("Leer", new TimeSpan(7, 0, 0), new TimeSpan(7, 29, 59), true);
+        
         var activity = routineMorning.GetActivity();
 
         activity.Should().Be("Leer");
