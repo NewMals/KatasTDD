@@ -63,71 +63,8 @@ public class MorningRoutinesTest
     {
         var routineMorning = new MorningRoutine(new TimeSpan(7, 20, 15));
 
-        var activity = routineMorning.AddRoutine("Leer", new TimeSpan(7, 0, 0), new TimeSpan(7, 29, 59), true);
-
-        activity.Should().Be("Actividad Leer ha sido creada");
+        var newActivity = routineMorning.AddRoutine("Leer", new TimeSpan(7, 0, 0), new TimeSpan(7, 29, 59), true);
+        
+        newActivity.Should().Be("Actividad Leer ha sido creada");
     }
-}
-
-public class MorningRoutine(TimeSpan currentTime)
-{
-    private const string SinActividad = "Sin actividad";
-    private TimeSpan CurrentTime { get; } = currentTime;
-
-    public string GetActivity() =>
-        FindFirstRoutine()?.Name ?? SinActividad;
-
-    public string AddRoutine(string name, TimeSpan startTime, TimeSpan endTime, bool updateActivityExists = false)
-    {
-        var activity = FindFirstRoutine(startTime, endTime);
-
-        if (activity is not null && !updateActivityExists)
-            throw new Exception(
-                $"Para el horario de {startTime.ToString("c")} a {endTime.ToString("c")} existe la actividad {activity.Name}"
-            );
-
-        return $"Actividad {name} ha sido creada";
-    }
-
-    private Activity? FindFirstRoutine() =>
-        Activity
-            .Activities()
-            .FirstOrDefault(firstActivity =>
-                firstActivity.StartTime <= CurrentTime && firstActivity.EndTime >= CurrentTime);
-
-
-    private Activity? FindFirstRoutine(TimeSpan startTime, TimeSpan endTime) =>
-        Activity
-            .Activities()
-            .FirstOrDefault(firstActivity => firstActivity.StartTime <= startTime && firstActivity.EndTime >= endTime);
-}
-
-public class Activity
-{
-    public string? Name { get; private init; }
-    public TimeSpan StartTime { get; private init; }
-    public TimeSpan EndTime { get; private init; }
-
-    public static List<Activity> Activities() =>
-    [
-        new()
-        {
-            Name = "Hacer ejercicio",
-            StartTime = new TimeSpan(6, 0, 0),
-            EndTime = new TimeSpan(6, 59, 59)
-        },
-
-        new()
-        {
-            Name = "Leer y estudiar",
-            StartTime = new TimeSpan(7, 0, 0),
-            EndTime = new TimeSpan(7, 29, 59)
-        },
-        new()
-        {
-            Name = "Desayunar",
-            StartTime = new TimeSpan(8, 0, 0),
-            EndTime = new TimeSpan(8, 59, 59)
-        }
-    ];
 }
