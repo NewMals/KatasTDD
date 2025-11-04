@@ -57,6 +57,11 @@ public class MorningRoutine(TimeSpan currentTime)
     {
         var activity = "";
         
+        activity = Activity
+            .Activities()
+            .FirstOrDefault(firstActivity => firstActivity.StartTime <= CurrentTime &&  firstActivity.EndTime >= CurrentTime)
+            ?.Name;
+        
         if (new TimeSpan(6, 59, 59) >= CurrentTime && new TimeSpan(6, 0, 0) <= CurrentTime)
             activity = "Hacer ejercicio";
         
@@ -70,5 +75,25 @@ public class MorningRoutine(TimeSpan currentTime)
             activity = "Sin actividad";
         
         return activity;
+    }
+}
+
+public class Activity
+{
+    public string Name { get; private set; }
+    public TimeSpan StartTime { get; private set; }
+    public TimeSpan EndTime { get; private set; }
+
+    public static List<Activity> Activities()
+    {
+        return new()
+        {
+            new()
+            {
+                Name = "Hacer ejercicio",
+                StartTime = new TimeSpan(6, 0, 0),
+                EndTime = new TimeSpan(7, 0, 0)
+            }
+        }; 
     }
 }
