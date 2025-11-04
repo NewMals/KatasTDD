@@ -14,6 +14,17 @@ public class MorningRoutinesTest
 
         activity.Should().Be(expectedRoutine);
     }
+
+    [Fact]
+    public void Si_LaHoraInicialEsEntre_0700_A_0759_Debe_MostrarActividad_LeerYEstudiar()
+    {
+        var expectedRoutine = "Leer y estudiar";
+        var routineMorning = new MorningRoutine(new TimeSpan(7,0,0), new TimeSpan(7,59,59));
+
+        var activity = routineMorning.GetActivity();
+
+        activity.Should().Be(expectedRoutine);
+    }
 }
 
 public class MorningRoutine
