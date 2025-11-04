@@ -55,11 +55,12 @@ public class MorningRoutine(TimeSpan currentTime)
     private TimeSpan CurrentTime { get; } = currentTime;
 
     public string GetActivity() => 
+        FindFirstRoutine()?.Name ?? SinActividad;
+
+    private Activity? FindFirstRoutine() =>
         Activity
             .Activities()
-            .FirstOrDefault(firstActivity => firstActivity.StartTime <= CurrentTime &&  firstActivity.EndTime >= CurrentTime)
-            ?.Name ?? SinActividad;
-        
+            .FirstOrDefault(firstActivity => firstActivity.StartTime <= CurrentTime &&  firstActivity.EndTime >= CurrentTime);
 }
 
 public class Activity
