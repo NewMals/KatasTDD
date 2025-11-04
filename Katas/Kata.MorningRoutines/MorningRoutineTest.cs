@@ -65,6 +65,9 @@ public class MorningRoutine(TimeSpan currentTime)
         else if (new TimeSpan(8, 59, 59) >= CurrentTime && new TimeSpan(8, 0, 0) <= CurrentTime)
             activity = "Desayunar";
         
+        else 
+            activity = "Sin actividad";
+        
         return activity;
     }
 }
