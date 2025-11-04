@@ -8,7 +8,7 @@ public class MorningRoutinesTest
     public void Si_LaHoraInicialEsEntre_0600_A_0659_Debe_MostrarActividad_HacerEjercicio()
     {
         var expectedRoutine = "Hacer ejercicio";
-        var routineMorning = new MorningRoutine();
+        var routineMorning = new MorningRoutine(new TimeSpan(6,0,0), new TimeSpan(6,59,59));
 
         var activity = routineMorning.GetActivity();
 
@@ -18,8 +18,13 @@ public class MorningRoutinesTest
 
 public class MorningRoutine
 {
-    public object GetActivity()
+    public MorningRoutine(TimeSpan initialHour, TimeSpan finalHour)
     {
-        throw new NotImplementedException();
+        
+    }
+
+    public string GetActivity()
+    {
+        return "Hacer ejercicio";
     }
 }
