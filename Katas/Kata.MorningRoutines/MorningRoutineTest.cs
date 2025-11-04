@@ -25,6 +25,17 @@ public class MorningRoutinesTest
 
         activity.Should().Be(expectedRoutine);
     }
+    
+    [Fact]
+    public void Si_LaHoraEstaEntre_0800_A_0859_Debe_MostrarActividad_Desayunar()
+    {
+        var expectedRoutine = "Leer y estudiar";
+        var routineMorning = new MorningRoutine(new TimeSpan(8,0,0));
+
+        var activity = routineMorning.GetActivity();
+
+        activity.Should().Be(expectedRoutine);
+    }
 }
 
 public class MorningRoutine(TimeSpan currentTime)
@@ -37,8 +48,9 @@ public class MorningRoutine(TimeSpan currentTime)
         if (new TimeSpan(6, 59, 59) >= CurrentTime && new TimeSpan(6, 0, 0) <= CurrentTime)
             activity = "Hacer ejercicio";
         
-        if (new TimeSpan(7, 59, 59) >= CurrentTime && new TimeSpan(7, 0, 0) <= CurrentTime)
+        else if (new TimeSpan(7, 59, 59) >= CurrentTime && new TimeSpan(7, 0, 0) <= CurrentTime)
             activity = "Leer y estudiar";
+        
             
         return activity;
     }
