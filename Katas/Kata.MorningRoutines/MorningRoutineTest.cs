@@ -16,21 +16,10 @@ public class MorningRoutinesTest
     }
 
     [Fact]
-    public void Si_LaHoraInicialEsEntre_0700_A_0729_Debe_MostrarActividad_Leer()
+    public void Si_LaHoraInicialEsEntre_0700_A_0759_Debe_MostrarActividad_LeerYEstudiar()
     {
-        var expectedRoutine = "Leer";
+        var expectedRoutine = "Leer y estudiar";
         var routineMorning = new MorningRoutine(new TimeSpan(7,0,0));
-
-        var activity = routineMorning.GetActivity();
-
-        activity.Should().Be(expectedRoutine);
-    }
-    
-    [Fact]
-    public void Si_LaHoraInicialEsEntre_0730_A_0759_Debe_MostrarActividad_Estudiar()
-    {
-        var expectedRoutine = "Estudiar";
-        var routineMorning = new MorningRoutine(new TimeSpan(7,30,0));
 
         var activity = routineMorning.GetActivity();
 
@@ -62,13 +51,14 @@ public class MorningRoutinesTest
 
 public class MorningRoutine(TimeSpan currentTime)
 {
+    private const string SinActividad = "Sin actividad";
     private TimeSpan CurrentTime { get; } = currentTime;
 
     public string GetActivity() => 
         Activity
             .Activities()
             .FirstOrDefault(firstActivity => firstActivity.StartTime <= CurrentTime &&  firstActivity.EndTime >= CurrentTime)
-            ?.Name ?? "Sin actividad";
+            ?.Name ?? SinActividad;
         
 }
 
@@ -89,18 +79,10 @@ public class Activity
 
         new()
         {
-            Name = "Leer",
+            Name = "Leer y estudiar",
             StartTime = new TimeSpan(7, 0, 0),
             EndTime = new TimeSpan(7, 29, 59)
         },
-
-        new()
-        {
-            Name = "Estudiar",
-            StartTime = new TimeSpan(7, 30, 0),
-            EndTime = new TimeSpan(7, 59, 59)
-        },
-
         new()
         {
             Name = "Desayunar",

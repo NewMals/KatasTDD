@@ -1,5 +1,5 @@
 - [X] Si la hora actual es entre las 06:00 a 06:59 debe mostrar actividad "Hacer ejercicio"
 - [X] Si la hora actual es entre las 07:00 a 07:29 debe mostrar actividad "Leer"
-- [ ] Si la hora actual es entre las 07:30 a 07:59 debe mostrar actividad "Estudiar"
+- [X] Si la hora actual es entre las 07:30 a 07:59 debe mostrar actividad "Estudiar"
 - [X] Si la hora actual es entre las 08:00 a 08:59 debe mostrar actividad "Desayunar"
 - [X] Si la hora actual es antes de las 05:59 y despues de las 09:00 debe mostrar "Sin actividad"
