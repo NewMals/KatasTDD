@@ -64,53 +64,49 @@ public class MorningRoutine(TimeSpan currentTime)
 {
     private TimeSpan CurrentTime { get; } = currentTime;
 
-    public string GetActivity()
-    {
-        var activity = "";
-        
-        activity = Activity
+    public string GetActivity() => 
+        Activity
             .Activities()
             .FirstOrDefault(firstActivity => firstActivity.StartTime <= CurrentTime &&  firstActivity.EndTime >= CurrentTime)
             ?.Name ?? "Sin actividad";
         
-        return activity;
-    }
 }
 
 public class Activity
 {
-    public string Name { get; private set; }
-    public TimeSpan StartTime { get; private set; }
-    public TimeSpan EndTime { get; private set; }
+    public string? Name { get; private init; }
+    public TimeSpan StartTime { get; private init; }
+    public TimeSpan EndTime { get; private init; }
 
-    public static List<Activity> Activities()
-    {
-        return new()
+    public static List<Activity> Activities() =>
+    [
+        new()
         {
-            new()
-            {
-                Name = "Hacer ejercicio",
-                StartTime = new TimeSpan(6, 0, 0),
-                EndTime = new TimeSpan(6, 59, 59)
-            },
-            new()
-            {
-                Name = "Leer",
-                StartTime = new TimeSpan(7, 0, 0),
-                EndTime = new TimeSpan(7, 29, 59)
-            },
-            new()
-            {
-                Name = "Estudiar",
-                StartTime = new TimeSpan(7, 30, 0),
-                EndTime = new TimeSpan(7, 59, 59)
-            },
-            new()
-            {
-                Name = "Desayunar",
-                StartTime = new TimeSpan(8, 0, 0),
-                EndTime = new TimeSpan(8, 59, 59)
-            }
-        }; 
-    }
+            Name = "Hacer ejercicio",
+            StartTime = new TimeSpan(6, 0, 0),
+            EndTime = new TimeSpan(6, 59, 59)
+        },
+
+        new()
+        {
+            Name = "Leer",
+            StartTime = new TimeSpan(7, 0, 0),
+            EndTime = new TimeSpan(7, 29, 59)
+        },
+
+        new()
+        {
+            Name = "Estudiar",
+            StartTime = new TimeSpan(7, 30, 0),
+            EndTime = new TimeSpan(7, 59, 59)
+        },
+
+        new()
+        {
+            Name = "Desayunar",
+            StartTime = new TimeSpan(8, 0, 0),
+            EndTime = new TimeSpan(8, 59, 59)
+        }
+    ]; 
+    
 }
