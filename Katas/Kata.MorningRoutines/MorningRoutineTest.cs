@@ -59,7 +59,7 @@ public class MorningRoutinesTest
     }
     
     [Fact]
-    public void Si_QuieroAgregarLaActividad_Leer_Entre_0700_A_0729_IndicandoQueActualiceLaActividadAnterior_Debe_Actualizar_LaActividadQueExiste()
+    public void Si_QuieroAgregarLaActividad_Leer_Entre_0700_A_0729_IndicandoQueSeCreoLaActividad_Leer()
     {
         var routineMorning = new MorningRoutine(new TimeSpan(7, 20, 15));
 
@@ -86,7 +86,7 @@ public class MorningRoutine(TimeSpan currentTime)
                 $"Para el horario de {startTime.ToString("c")} a {endTime.ToString("c")} existe la actividad {activity.Name}"
             );
 
-        return "";
+        return $"Actividad {name} ha sido creada";
     }
 
     private Activity? FindFirstRoutine() =>
