@@ -55,7 +55,17 @@ public class MorningRoutinesTest
 
         var activity = () => routineMorning.AddRoutine("Leer", new TimeSpan(7, 0, 0), new TimeSpan(7, 29, 59));
 
-        activity.Should().ThrowExactly<Exception>().WithMessage("Para el horario de 07:00:00 a 07:29:59 existe la rutina Leer y estudiar");
+        activity.Should().ThrowExactly<Exception>().WithMessage("Para el horario de 07:00:00 a 07:29:59 existe la actividad Leer y estudiar");
+    }
+    
+    [Fact]
+    public void Si_QuieroAgregarLaActividad_Leer_Entre_0700_A_0729_IndicandoQueActualiceLaActividadAnterior_Debe_Actualizar_LaActividadQueExiste()
+    {
+        var routineMorning = new MorningRoutine(new TimeSpan(7, 20, 15));
+
+        var activity = routineMorning.AddRoutine("Leer", new TimeSpan(7, 0, 0), new TimeSpan(7, 29, 59), true);
+
+        activity.Should().Be("Actividad Leer ha sido creada");
     }
 }
 
@@ -67,14 +77,16 @@ public class MorningRoutine(TimeSpan currentTime)
     public string GetActivity() =>
         FindFirstRoutine()?.Name ?? SinActividad;
 
-    public void AddRoutine(string name, TimeSpan startTime, TimeSpan endTime)
+    public string AddRoutine(string name, TimeSpan startTime, TimeSpan endTime, bool updateActivityExists = false)
     {
         var activity = FindFirstRoutine(startTime, endTime);
 
-        if (activity is not null)
+        if (activity is not null && !updateActivityExists)
             throw new Exception(
-                $"Para el horario de {startTime.ToString("c")} a {endTime.ToString("c")} existe la rutina {activity.Name}"
+                $"Para el horario de {startTime.ToString("c")} a {endTime.ToString("c")} existe la actividad {activity.Name}"
             );
+
+        return "";
     }
 
     private Activity? FindFirstRoutine() =>
