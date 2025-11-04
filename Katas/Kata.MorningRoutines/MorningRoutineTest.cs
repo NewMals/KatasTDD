@@ -18,9 +18,13 @@ public class MorningRoutinesTest
 
 public class MorningRoutine
 {
+    private TimeSpan _initialHour { get; }
+    private TimeSpan _finalHour { get; }
+    
     public MorningRoutine(TimeSpan initialHour, TimeSpan finalHour)
     {
-        
+        _initialHour = initialHour;
+        _finalHour = finalHour;
     }
 
     public string GetActivity()
