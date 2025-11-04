@@ -47,6 +47,15 @@ public class MorningRoutinesTest
 
         activity.Should().Be(expectedRoutine);
     }
+
+    [Fact]
+    public void Si_AgregoLaActividad_Leer_Entre_0700_A_0729_Debe_MostrarActividad_Leer()
+    {
+        var expectedRoutine = "Leer";
+        var routineMorning = new MorningRoutine(new TimeSpan(7,20,15));
+        
+        routineMorning.AddRoutine(expectedRoutine, new TimeSpan(7,0,0), new TimeSpan(7,29,59));
+    }
 }
 
 public class MorningRoutine(TimeSpan currentTime)
@@ -61,6 +70,11 @@ public class MorningRoutine(TimeSpan currentTime)
         Activity
             .Activities()
             .FirstOrDefault(firstActivity => firstActivity.StartTime <= CurrentTime &&  firstActivity.EndTime >= CurrentTime);
+
+    public void AddRoutine(string expectedRoutine, TimeSpan timeSpan, TimeSpan timeSpan1)
+    {
+        throw new NotImplementedException();
+    }
 }
 
 public class Activity
@@ -90,6 +104,5 @@ public class Activity
             StartTime = new TimeSpan(8, 0, 0),
             EndTime = new TimeSpan(8, 59, 59)
         }
-    ]; 
-    
+    ];
 }
