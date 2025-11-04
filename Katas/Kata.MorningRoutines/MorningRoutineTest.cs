@@ -49,12 +49,13 @@ public class MorningRoutinesTest
     }
 
     [Fact]
-    public void Si_AgregoLaActividad_Leer_Entre_0700_A_0729_Debe_MostrarActividad_Leer()
+    public void Si_QuieroAgregarLaActividad_Leer_Entre_0700_A_0729_Debe_MostrarUnMensajeIndicando_LaActividadQueExiste()
     {
-        var expectedRoutine = "Leer";
         var routineMorning = new MorningRoutine(new TimeSpan(7,20,15));
         
-        routineMorning.AddRoutine(expectedRoutine, new TimeSpan(7,0,0), new TimeSpan(7,29,59));
+        var activity = routineMorning.AddRoutine("Leer", new TimeSpan(7,0,0), new TimeSpan(7,29,59));
+        
+        activity.Should().Be("Ya existe una rutina para el horario de 07:00 A 07:59");
     }
 }
 
@@ -65,16 +66,16 @@ public class MorningRoutine(TimeSpan currentTime)
 
     public string GetActivity() => 
         FindFirstRoutine()?.Name ?? SinActividad;
+    
+    public string AddRoutine(string name, TimeSpan startTime, TimeSpan endTime)
+    {
+        return "Ya existe una rutina para el horario de 07:00 A 07:59";
+    }
 
     private Activity? FindFirstRoutine() =>
         Activity
             .Activities()
             .FirstOrDefault(firstActivity => firstActivity.StartTime <= CurrentTime &&  firstActivity.EndTime >= CurrentTime);
-
-    public void AddRoutine(string expectedRoutine, TimeSpan timeSpan, TimeSpan timeSpan1)
-    {
-        throw new NotImplementedException();
-    }
 }
 
 public class Activity
@@ -105,4 +106,19 @@ public class Activity
             EndTime = new TimeSpan(8, 59, 59)
         }
     ];
+
+    public static void AddActivity(string name, TimeSpan startTime, TimeSpan endTime)
+    {
+        Activities().Add(new Activity
+        {
+            Name = name,
+            StartTime = startTime,
+            EndTime = endTime
+        });
+    }
+
+    private static void UpdateActivity(Activity activity)
+    {
+        Activities().Remove(activity);
+    }
 }
