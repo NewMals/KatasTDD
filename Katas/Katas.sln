@@ -8,7 +8,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kata.GameOfLife", "Kata.Gam
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kata.RomanNumerals", "Kata.RomanNumerals\Kata.RomanNumerals.csproj", "{74320210-272E-4075-9114-6BD21F0AE1CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kata.MorningRoutine", "Kata.MorningRoutine\Kata.MorningRoutine.csproj", "{B2CC909E-CCF9-47ED-B75C-473385FF51F7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kata.MorningRoutines", "Kata.MorningRoutines\Kata.MorningRoutines.csproj", "{B2CC909E-CCF9-47ED-B75C-473385FF51F7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
