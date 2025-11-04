@@ -27,22 +27,17 @@ public class MorningRoutinesTest
     }
 }
 
-public class MorningRoutine
+public class MorningRoutine(TimeSpan currentTime)
 {
-    private TimeSpan _currentTime { get; }
-    
-    public MorningRoutine(TimeSpan currentTime)
-    {
-       _currentTime  = currentTime;
-    }
+    private TimeSpan CurrentTime { get; } = currentTime;
 
     public string GetActivity()
     {
         var activity = "";
-        if (new TimeSpan(6, 59, 59) >= _currentTime && new TimeSpan(6, 0, 0) <= _currentTime)
+        if (new TimeSpan(6, 59, 59) >= CurrentTime && new TimeSpan(6, 0, 0) <= CurrentTime)
             activity = "Hacer ejercicio";
         
-        if (new TimeSpan(7, 59, 59) >= _currentTime && new TimeSpan(7, 0, 0) <= _currentTime)
+        if (new TimeSpan(7, 59, 59) >= CurrentTime && new TimeSpan(7, 0, 0) <= CurrentTime)
             activity = "Leer y estudiar";
             
         return activity;
