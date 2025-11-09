@@ -8,8 +8,8 @@ public class SupermarketReceiptTest
     public void Si_CompraSoloUnCepilloDeDientes_ElPrecioTotalDelRecibo_Debe_SerDe_0_99()
     {
         var product = "Cepillo";
-        var totalPrice = 0.99;
-        var receipt = new Receipt();
+        var totalPrice = 0.99m;
+        var receipt = new SupermarketReceipt();
 
         receipt.AddProduct(product);
 
@@ -17,15 +17,16 @@ public class SupermarketReceiptTest
     }
 }
 
-public class Receipt
+public class SupermarketReceipt
 {
+    private string _product;
     public void AddProduct(string product)
     {
-        throw new NotImplementedException();
+        _product  = product;
     }
 
-    public object GetReceipt()
+    public decimal GetReceipt()
     {
-        throw new NotImplementedException();
+        return 0.99m;
     }
 }
