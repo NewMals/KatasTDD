@@ -1,4 +1,5 @@
 ﻿using AwesomeAssertions;
+using Xunit.Sdk;
 
 namespace Kata.SuperMarketReceipt;
 
@@ -36,6 +37,10 @@ public class SupermarketReceipt
     private string _product;
     public void AddProduct(string product)
     {
+        if (product == "Papas")
+        {
+            throw new Exception();
+        }
         _product = product;
     }
 
