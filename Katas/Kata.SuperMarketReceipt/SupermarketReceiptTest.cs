@@ -56,23 +56,18 @@ public class SupermarketReceiptTest
 
 public class SupermarketReceipt
 {
+    private readonly Catalog _catalog = new();
     private readonly List<string> _products = [];
+
     public void AddProductToCar(string product)
     {
-        var catalog = new Catalog();
-        catalog.ExistsProductInCatalog(product);
+        _catalog.ExistsProductInCatalog(product);
         _products.Add(product);
     }
 
     public decimal GetReceipt()
     {
-        var catalog = new Catalog();
-        var totalPrice = 0m;
-        foreach (var product in _products)
-        {
-            totalPrice += catalog.GetPriceProduct(product);
-        }
-        return totalPrice;
+        return _products.Sum(product => _catalog.GetPriceProduct(product));
     }
 }
 
