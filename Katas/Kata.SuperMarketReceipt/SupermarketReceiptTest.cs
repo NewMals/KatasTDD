@@ -9,6 +9,7 @@ public class SupermarketReceiptTest
     [InlineData("Manzanas", 1.99)]
     [InlineData("Arroz", 2.49)]
     [InlineData("TuboPastaDientes", 1.79)]
+    [InlineData("TomateCherry", 0.69)]
     public void Si_CompraSoloUnArticulo_ElPrecioTotalDelRecibo_Debe_SerElPrecioDelProducto(string product,
         decimal totalPrice)
     {
@@ -17,6 +18,16 @@ public class SupermarketReceiptTest
         receipt.AddProduct(product);
         
         receipt.GetReceipt().Should().Be(totalPrice);
+    }
+
+    [Fact]
+    public void Si_NoExisteUnArticulo_Debe_MostrarUnaExcepcion()
+    {
+        var receipt = new SupermarketReceipt();
+        
+        var exception = () => receipt.AddProduct("Papas");
+        
+        exception.Should().Throw<Exception>();
     }
 }
 
@@ -35,8 +46,9 @@ public class SupermarketReceipt
         {
             "Cepillo" => 0.99m,
             "Manzanas" => 1.99m,
+            "Arroz" => 2.49m,
             "TuboPastaDientes" => 1.79m,
-            _ => 2.49m
+            _ => 0.69m
         };
     }
 }
