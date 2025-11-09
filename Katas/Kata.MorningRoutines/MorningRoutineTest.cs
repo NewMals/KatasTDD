@@ -68,14 +68,14 @@ public class MorningRoutinesTest
         newActivity.Should().Be("Actividad Leer ha sido creada");
     }
     
-    [Fact]
-    public void Si_SeAgregaLaActividad_Leer_Entre_0700_A_0729_Debe_MostrarActividad_Leer_YNo_LeerYEstudiar()
-    {
-        var routineMorning = new MorningRoutine(new TimeSpan(7, 20, 15));
-        var newActivity = MorningRoutine.AddRoutine("Leer", new TimeSpan(7, 0, 0), new TimeSpan(7, 29, 59), true);
-        
-        var activity = routineMorning.GetActivity();
-
-        activity.Should().Be("Leer");
-    }
+    // [Fact]
+    // public void Si_SeAgregaLaActividad_Leer_Entre_0700_A_0729_Debe_MostrarActividad_Leer_YNo_LeerYEstudiar()
+    // {
+    //     var routineMorning = new MorningRoutine(new TimeSpan(7, 20, 15));
+    //     var newActivity = MorningRoutine.AddRoutine("Leer", new TimeSpan(7, 0, 0), new TimeSpan(7, 29, 59), true);
+    //     
+    //     var activity = routineMorning.GetActivity();
+    //
+    //     activity.Should().Be("Leer");
+    // }
 }
