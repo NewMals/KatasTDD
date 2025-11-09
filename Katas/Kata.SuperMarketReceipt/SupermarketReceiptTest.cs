@@ -35,6 +35,7 @@ public class SupermarketReceipt
         {
             "Cepillo" => 0.99m,
             "Manzanas" => 1.99m,
+            "TuboPastaDientes" => 1.79m,
             _ => 2.49m
         };
     }
