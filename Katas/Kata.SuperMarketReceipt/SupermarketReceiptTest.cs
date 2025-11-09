@@ -16,7 +16,7 @@ public class SupermarketReceiptTest
     {
         var receipt = new SupermarketReceipt();
         
-        receipt.AddProduct(product);
+        receipt.AddProductToCar(product);
         
         receipt.GetReceipt().Should().Be(totalPrice);
     }
@@ -26,7 +26,7 @@ public class SupermarketReceiptTest
     {
         var receipt = new SupermarketReceipt();
         
-        var exception = () => receipt.AddProduct("Papa");
+        var exception = () => receipt.AddProductToCar("Papa");
         
         exception.Should().Throw<Exception>();
     }
@@ -37,7 +37,7 @@ public class SupermarketReceiptTest
         var product = "Arveja";
         var receipt = new SupermarketReceipt();
         
-        var exception = () => receipt.AddProduct(product);
+        var exception = () => receipt.AddProductToCar(product);
         
         exception.Should().Throw<Exception>().WithMessage($"El producto {product} no existe");
     }
@@ -46,12 +46,10 @@ public class SupermarketReceiptTest
 public class SupermarketReceipt
 {
     private string _product;
-    public void AddProduct(string product)
+    public void AddProductToCar(string product)
     {
-        if (product == "Papa")
-        {
-            throw new Exception();
-        }
+        var catalog = new Catalog();
+        catalog.AvailableProductInCatalog(product);
         _product = product;
     }
 
@@ -70,4 +68,21 @@ public class SupermarketReceipt
 }
 
 
+public class Catalog()
+{
+    private List<string> _products = new List<string>()
+    {
+        "Cepillo",
+        "Manzana",
+        "Arroz",
+        "TuboPastaDientes",
+        "TomateCherry"
+    };
 
+    public void AvailableProductInCatalog(string product)
+    {
+        if(!_products.Any(productInCatalog => productInCatalog == product))
+            throw new Exception($"El producto {product} no existe");
+            
+    }
+}
