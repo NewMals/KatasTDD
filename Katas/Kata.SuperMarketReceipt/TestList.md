@@ -18,6 +18,6 @@ Estos son solo ejemplos: las ofertas especiales reales cambian cada semana.
 ## Comportamientos a validar
 - [X] Si compra un solo cepillo de dientes el precio total del recibo debe ser de de 0,99. 
 - [X] Si compra un solo kilo de manzanas el precio total del recibo debe ser de 1,99.
-- [ ] Si compra un solo saco de arroz el precio total del recibo debe ser de 2,49.
-- [ ] Si compra un solo tubo de pasta de dientes el precio total del recibo debe ser de 2,49.
+- [X] Si compra un solo saco de arroz el precio total del recibo debe ser de 2,49.
+- [ ] Si compra un solo tubo de pasta de dientes el precio total del recibo debe ser de 1,79.
 - [ ] Si compra una sola caja de tomates cherry el precio total del recibo debe ser de 0,69.

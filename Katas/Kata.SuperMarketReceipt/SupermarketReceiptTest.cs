@@ -8,6 +8,7 @@ public class SupermarketReceiptTest
     [InlineData("Cepillo", 0.99)]
     [InlineData("Manzanas", 1.99)]
     [InlineData("Arroz", 2.49)]
+    [InlineData("TuboPastaDientes", 1.79)]
     public void Si_CompraSoloUnArticulo_ElPrecioTotalDelRecibo_Debe_SerElPrecioDelProducto(string product,
         decimal totalPrice)
     {
