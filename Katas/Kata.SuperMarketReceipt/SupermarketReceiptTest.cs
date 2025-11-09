@@ -56,43 +56,47 @@ public class SupermarketReceiptTest
 
 public class SupermarketReceipt
 {
-    private string _product;
+    private readonly List<string> _products = [];
     public void AddProductToCar(string product)
     {
         var catalog = new Catalog();
-        catalog.AvailableProductInCatalog(product);
-        _product = product;
+        catalog.ExistsProductInCatalog(product);
+        _products.Add(product);
     }
 
     public decimal GetReceipt()
     {
-        
-        return _product switch
+        var catalog = new Catalog();
+        var totalPrice = 0m;
+        foreach (var product in _products)
         {
-            "Cepillo" => 0.99m,
-            "Manzana" => 1.99m,
-            "Arroz" => 2.49m,
-            "TuboPastaDientes" => 1.79m,
-            _ => 0.69m
-        };
+            totalPrice += catalog.GetPriceProduct(product);
+        }
+        return totalPrice;
     }
 }
 
 
 public class Catalog()
 {
-    private List<string> _products =
-    [
-        "Cepillo",
-        "Manzana",
-        "Arroz",
-        "TuboPastaDientes",
-        "TomateCherry"
-    ];
-
-    public void AvailableProductInCatalog(string product)
+    private Dictionary<string, decimal> _products = new()
     {
-        if(_products.All(productInCatalog => productInCatalog != product))
+        {"Cepillo", 0.99m},
+        {"Manzana", 1.99m},
+        {"Arroz", 2.49m},
+        {"TuboPastaDientes", 1.79m},
+        {"TomateCherry",  0.69m }
+    };
+
+    public void ExistsProductInCatalog(string product)
+    {
+        if(_products.All(productInCatalog => productInCatalog.Key != product))
             throw new Exception($"No existe un producto con el nombre {product}");
+    }
+
+    public decimal GetPriceProduct(string product)
+    {
+        ExistsProductInCatalog(product);
+        return _products.FirstOrDefault(productInCatalog => productInCatalog.Key == product).Value;
     }
 }
