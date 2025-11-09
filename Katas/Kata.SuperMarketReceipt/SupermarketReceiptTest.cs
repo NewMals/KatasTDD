@@ -39,7 +39,7 @@ public class SupermarketReceiptTest
         
         var exception = () => receipt.AddProductToCar(product);
         
-        exception.Should().Throw<Exception>().WithMessage($"El producto {product} no existe");
+        exception.Should().Throw<Exception>().WithMessage($"No existe un producto con el nombre {product}");
     }
 }
 
@@ -70,19 +70,18 @@ public class SupermarketReceipt
 
 public class Catalog()
 {
-    private List<string> _products = new List<string>()
-    {
+    private List<string> _products =
+    [
         "Cepillo",
         "Manzana",
         "Arroz",
         "TuboPastaDientes",
         "TomateCherry"
-    };
+    ];
 
     public void AvailableProductInCatalog(string product)
     {
-        if(!_products.Any(productInCatalog => productInCatalog == product))
-            throw new Exception($"El producto {product} no existe");
-            
+        if(_products.All(productInCatalog => productInCatalog != product))
+            throw new Exception($"No existe un producto con el nombre {product}");
     }
 }
