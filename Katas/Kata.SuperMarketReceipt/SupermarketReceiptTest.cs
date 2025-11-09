@@ -4,39 +4,17 @@ namespace Kata.SuperMarketReceipt;
 
 public class SupermarketReceiptTest
 {
-    [Fact]
-    public void Si_CompraSoloUnCepilloDeDientes_ElPrecioTotalDelRecibo_Debe_SerDe_0_99()
+    [Theory]
+    [InlineData("Cepillo", 0.99)]
+    [InlineData("Manzanas", 1.99)]
+    [InlineData("Arroz", 2.49)]
+    public void Si_CompraSoloUnArticulo_ElPrecioTotalDelRecibo_Debe_SerElPrecioDelProducto(string product,
+        decimal totalPrice)
     {
-        var product = "Cepillo";
-        var totalPrice = 0.99m;
         var receipt = new SupermarketReceipt();
-
+        
         receipt.AddProduct(product);
-
-        receipt.GetReceipt().Should().Be(totalPrice);
-    }
-    
-    [Fact]
-    public void Si_CompraSoloUnKiloDeManzanas_ElPrecioTotalDelRecibo_Debe_SerDe_1_99()
-    {
-        var product = "Manzanas";
-        var totalPrice = 1.99m;
-        var receipt = new SupermarketReceipt();
-
-        receipt.AddProduct(product);
-
-        receipt.GetReceipt().Should().Be(totalPrice);
-    }
-    
-    [Fact]
-    public void Si_CompraSoloUnSacoDeArroz_ElPrecioTotalDelRecibo_Debe_SerDe_2_49()
-    {
-        var product = "Arroz";
-        var totalPrice = 2.49m;
-        var receipt = new SupermarketReceipt();
-
-        receipt.AddProduct(product);
-
+        
         receipt.GetReceipt().Should().Be(totalPrice);
     }
 }
