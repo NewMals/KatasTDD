@@ -39,6 +39,6 @@ public class SupermarketReceipt
 
     public decimal GetReceipt()
     {
-        return 0.99m;
+        return _product == "Manzanas" ? 1.99m : 0.99m;
     }
 }
