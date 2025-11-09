@@ -27,6 +27,18 @@ public class SupermarketReceiptTest
 
         receipt.GetReceipt().Should().Be(totalPrice);
     }
+    
+    [Fact]
+    public void Si_CompraSoloUnSacoDeArroz_ElPrecioTotalDelRecibo_Debe_SerDe_2_49()
+    {
+        var product = "Arroz";
+        var totalPrice = 2.49m;
+        var receipt = new SupermarketReceipt();
+
+        receipt.AddProduct(product);
+
+        receipt.GetReceipt().Should().Be(totalPrice);
+    }
 }
 
 public class SupermarketReceipt
@@ -34,11 +46,17 @@ public class SupermarketReceipt
     private string _product;
     public void AddProduct(string product)
     {
-        _product  = product;
+        _product = product;
     }
 
     public decimal GetReceipt()
     {
-        return _product == "Manzanas" ? 1.99m : 0.99m;
+        
+        return _product switch
+        {
+            "Cepillo" => 0.99m,
+            "Manzanas" => 1.99m,
+            _ => 2.49m
+        };
     }
 }
