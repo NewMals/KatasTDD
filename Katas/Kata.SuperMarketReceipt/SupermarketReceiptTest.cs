@@ -41,6 +41,17 @@ public class SupermarketReceiptTest
         
         exception.Should().Throw<Exception>().WithMessage($"No existe un producto con el nombre {product}");
     }
+    
+    [Fact]
+    public void Si_CompraUnCepilloYUnTuboDePastaDeDientes_ElPrecioTotal_Debe_2_78()
+    {
+        var receipt = new SupermarketReceipt();
+        
+        receipt.AddProductToCar("Cepillo");
+        receipt.AddProductToCar("TuboPastaDientes");
+        
+        receipt.GetReceipt().Should().Be(2.78m);
+    }
 }
 
 public class SupermarketReceipt
