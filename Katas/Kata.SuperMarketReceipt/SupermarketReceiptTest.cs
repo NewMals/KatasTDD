@@ -79,6 +79,11 @@ public class SupermarketReceipt
 
     public decimal GetReceipt()
     {
+        var productAmount = _products.Count(product => product == "Cepillo");
+        
+        if(productAmount == 3)
+            _products.Remove("Cepillo");
+
         return _products.Sum(product => _catalog.GetPriceProduct(product));
     }
 }
