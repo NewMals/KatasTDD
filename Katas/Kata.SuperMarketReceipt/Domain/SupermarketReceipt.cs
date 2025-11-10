@@ -24,7 +24,6 @@ public class SupermarketReceipt
         return totalPrice - discountValue;
     }
     
-    
     public string GetReceipt()
     {
         var viewReceipt = string.Empty;
