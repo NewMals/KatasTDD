@@ -53,6 +53,7 @@ public class SupermarketReceipt
     private decimal DiscountBundle(decimal bundlePrice, string product, int size)
     {
         var numberOfBundles = _products.Count(productFind => productFind == product) / size;
-        return numberOfBundles > 0 ? bundlePrice : 0;
+        var discount = numberOfBundles % size == 0 ? numberOfBundles * bundlePrice : bundlePrice;
+        return numberOfBundles > 0 ? discount : 0;
     }
 }
