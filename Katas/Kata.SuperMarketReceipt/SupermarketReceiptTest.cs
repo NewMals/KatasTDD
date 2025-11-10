@@ -186,7 +186,7 @@ public class SupermarketReceiptTest
         receipt.AddProductToCar("Manzana");
         receipt.AddProductToCar("Arroz");
 
-        receipt.GetReceipt().Should().Be(" 1 Manzana\n 1 Arroz\n");
+        receipt.GetReceipt().Should().Be(" 1 Manzana\n 1 Arroz\n Valor total: 4,48");
     }
     
     [Fact]
@@ -198,7 +198,7 @@ public class SupermarketReceiptTest
         receipt.AddProductToCar("TuboPastaDientes");
         receipt.AddProductToCar("Manzana");
 
-        receipt.GetReceipt().Should().Be(" 2 Manzana\n 1 TuboPastaDientes\n");
+        receipt.GetReceipt().Should().Be(" 2 Manzana\n 1 TuboPastaDientes\n Valor total: 5,77");
     }
     
     [Fact]
@@ -216,7 +216,7 @@ public class SupermarketReceiptTest
         receipt.AddProductToCar("TuboPastaDientes");
         receipt.AddProductToCar("Manzana");
 
-        receipt.GetReceipt().Should().Be(" 2 Manzana\n 1 TuboPastaDientes\n Descuentos aplicados: 0,796");
+        receipt.GetReceipt().Should().Be(" 2 Manzana\n 1 TuboPastaDientes\n Descuentos aplicados: 0,796\n Valor total: 4,974");
     }
     
     [Fact]
@@ -230,10 +230,12 @@ public class SupermarketReceiptTest
         receipt.AddDiscount(discountRice);
         receipt.AddDiscount(discountToothpaste);
         
-        receipt.AddProductToCar("Manzana");
         receipt.AddProductToCar("TuboPastaDientes");
-        receipt.AddProductToCar("Manzana");
+        receipt.AddProductToCar("TuboPastaDientes");
+        receipt.AddProductToCar("TuboPastaDientes");
+        receipt.AddProductToCar("TuboPastaDientes");
+        receipt.AddProductToCar("TuboPastaDientes");
 
-        receipt.GetReceipt().Should().Be(" 2 Manzana\n 1 TuboPastaDientes\n Descuentos aplicados: 2,256\n Valor total: 10,674");
+        receipt.GetReceipt().Should().Be(" 5 TuboPastaDientes\n Descuentos aplicados: 1,46\n Valor total: 7,49");
     }
 }

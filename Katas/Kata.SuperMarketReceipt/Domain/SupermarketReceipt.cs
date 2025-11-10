@@ -20,8 +20,34 @@ public class SupermarketReceipt
     public decimal GetTotalPrice()
     {
         var discountValue = CalculateDiscount();
-        var totalPrice = _productsInCar.Sum(product => _catalog.GetPriceProduct(product));
+        var totalPrice = CalculateTotalPrice();
         return totalPrice - discountValue;
+    }
+    
+    
+    public string GetReceipt()
+    {
+        var viewReceipt = string.Empty;
+        var products = _productsInCar.Distinct();
+
+        viewReceipt = products.Aggregate(
+            viewReceipt
+            , (current, product) => current + $" {_productsInCar.Count(productFind => productFind == product)} {product}\n"
+        );
+
+        var discountsApply = CalculateDiscount();
+        
+        if(discountsApply > 0)
+            viewReceipt += $" Descuentos aplicados: {discountsApply}\n";
+
+        viewReceipt += $" Valor total: {CalculateTotalPrice() - discountsApply}";
+
+        return viewReceipt;
+    }
+
+    private decimal CalculateTotalPrice()
+    {
+        return _productsInCar.Sum(product => _catalog.GetPriceProduct(product));
     }
 
     private decimal CalculateDiscount()
@@ -61,21 +87,4 @@ public class SupermarketReceipt
         return numberOfBundles > 0 ? discount : 0;
     }
 
-    public string GetReceipt()
-    {
-        var viewReceipt = string.Empty;
-        var products = _productsInCar.Distinct();
-
-        foreach (var product in products)
-        {
-            viewReceipt += $" {_productsInCar.Count(productFind => productFind == product)} {product}\n";
-        }
-
-        var discountsApply = CalculateDiscount();
-        
-        if(discountsApply > 0)
-            viewReceipt += $" Descuentos aplicados: {CalculateDiscount()}";
-
-        return viewReceipt;
-    }
 }   
