@@ -5,16 +5,17 @@ public class SupermarketReceipt
     private readonly Catalog _catalog = new();
     private readonly StoreDiscounts _discounts = new();
     private readonly List<string> _products = [];
-    public void AddProductToCar(string product)
-    {
-        _catalog.ExistsProductInCatalog(product);
-        _products.Add(product);
-    }
-
+    
     public void AddDiscount(Discount discount)
     {
         _catalog.ExistsProductInCatalog(discount.ProductName);
         _discounts.AddDiscount(discount);
+    }
+    
+    public void AddProductToCar(string product)
+    {
+        _catalog.ExistsProductInCatalog(product);
+        _products.Add(product);
     }
 
     public decimal GetReceipt()
@@ -27,7 +28,7 @@ public class SupermarketReceipt
             {
                 "Amount" => DiscountAmount(discount.Value),
                 "Percentage" => DiscountPercentage(discount.Value, discount.ProductName),
-                "Price" => discount.Value,
+                "Bundle" => DiscountBundle(discount.Value),
                 _ => current
             });
 
@@ -48,6 +49,10 @@ public class SupermarketReceipt
             .Where(productFind => productFind == product)
             .Sum(productFinded => _catalog.GetPriceProduct(productFinded)) * percentage;
     }
-}
 
-public record Discount(string ProductName, string Type, dynamic Value);
+    private decimal DiscountBundle(decimal bundlePrice)
+    {
+        var numberOfBundles = _products.Count(productFind => productFind == nameof(ProductName.TuboPastaDientes)) / 5;
+        return numberOfBundles > 0 ? bundlePrice : 0;
+    }
+}
