@@ -63,6 +63,14 @@ public class SupermarketReceipt
 
     public string GetReceipt()
     {
-        return "1 Manzana\n 1 Arroz\n";
+        var viewReceipt = string.Empty;
+        var products = _productsInCar.Distinct();
+
+        foreach (var product in products)
+        {
+            viewReceipt += $" {_productsInCar.Count(productFind => productFind == product)} {product}\n";
+        }
+
+        return viewReceipt;
     }
 }
