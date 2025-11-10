@@ -27,7 +27,11 @@ public class SupermarketReceipt
         
         if(_discounts.Any(product => product == nameof(ProductName.Manzana))
            && _products.Any(product => product == nameof(ProductName.Manzana)))
-            discount = DiscountPercentage(0.2m); 
+            discount = DiscountPercentage(0.2m, nameof(ProductName.Manzana)); 
+        
+        if(_discounts.Any(product => product == nameof(ProductName.Arroz))
+           && _products.Any(product => product == nameof(ProductName.Arroz)))
+            discount = DiscountPercentage(0.1m,  nameof(ProductName.Arroz)); 
 
         return _products.Sum(product => _catalog.GetPriceProduct(product)) - discount;
     }
@@ -40,10 +44,10 @@ public class SupermarketReceipt
             .Sum(product => _catalog.GetPriceProduct(product));
     }
 
-    private decimal DiscountPercentage(decimal percentage)
+    private decimal DiscountPercentage(decimal percentage, string product)
     {
         return _products
-            .Where(product => product == nameof(ProductName.Manzana))
-            .Sum(product => _catalog.GetPriceProduct(product)) * percentage;
+            .Where(productFind => productFind == product)
+            .Sum(productFinded => _catalog.GetPriceProduct(productFinded)) * percentage;
     }
 }
