@@ -145,6 +145,7 @@ public class SupermarketReceiptTest
         
         receipt.AddProductToCar("TomateCherry");
         receipt.AddProductToCar("TomateCherry");
+        receipt.AddProductToCar("TomateCherry");
         
         receipt.GetReceipt().Should().Be(1.68m);
     }
