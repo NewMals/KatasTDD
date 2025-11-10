@@ -71,6 +71,11 @@ public class SupermarketReceipt
             viewReceipt += $" {_productsInCar.Count(productFind => productFind == product)} {product}\n";
         }
 
+        var discountsApply = CalculateDiscount();
+        
+        if(discountsApply > 0)
+            viewReceipt += $" Descuentos: {CalculateDiscount()}";
+
         return viewReceipt;
     }
-}
+}   
