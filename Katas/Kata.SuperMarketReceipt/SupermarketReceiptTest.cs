@@ -43,7 +43,7 @@ public class SupermarketReceiptTest
     }
     
     [Fact]
-    public void Si_CompraUnCepilloYUnTuboDePastaDeDientes_ElPrecioTotal_Debe_2_78()
+    public void Si_CompraSoloUnCepilloYUnTuboDePastaDeDientes_ElPrecioTotal_Debe_Ser_2_78()
     {
         var receipt = new SupermarketReceipt();
         
@@ -51,6 +51,18 @@ public class SupermarketReceiptTest
         receipt.AddProductToCar("TuboPastaDientes");
         
         receipt.GetReceipt().Should().Be(2.78m);
+    }
+
+    [Fact]
+    public void Si_CompraSoloDosCepillosElTerceroEsGratisPorMotivoDeDescuento_PorLotantoElPrecioTotal_Debe_Ser_1_98()
+    {
+        var receipt = new SupermarketReceipt();
+        
+        receipt.AddProductToCar("Cepillo");
+        receipt.AddProductToCar("Cepillo");
+        receipt.AddProductToCar("Cepillo");
+        
+        receipt.GetReceipt().Should().Be(1.98m);
     }
 }
 
@@ -72,7 +84,7 @@ public class SupermarketReceipt
 }
 
 
-public class Catalog()
+public class Catalog
 {
     private Dictionary<string, decimal> _products = new()
     {
