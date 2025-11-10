@@ -28,7 +28,7 @@ public class SupermarketReceipt
             {
                 "Amount" => DiscountAmount(discount.Value),
                 "Percentage" => DiscountPercentage(discount.Value, discount.ProductName),
-                "Bundle" => DiscountBundle(discount.Value),
+                "Bundle" => DiscountBundle(discount.Value, discount.ProductName, discount.Size),
                 _ => current
             });
 
@@ -50,9 +50,9 @@ public class SupermarketReceipt
             .Sum(productFinded => _catalog.GetPriceProduct(productFinded)) * percentage;
     }
 
-    private decimal DiscountBundle(decimal bundlePrice)
+    private decimal DiscountBundle(decimal bundlePrice, string product, int size)
     {
-        var numberOfBundles = _products.Count(productFind => productFind == nameof(ProductName.TuboPastaDientes)) / 5;
+        var numberOfBundles = _products.Count(productFind => productFind == product) / size;
         return numberOfBundles > 0 ? bundlePrice : 0;
     }
 }

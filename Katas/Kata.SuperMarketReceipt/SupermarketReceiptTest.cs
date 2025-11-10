@@ -96,7 +96,7 @@ public class SupermarketReceiptTest
     public void Si_Compra5TubosDePastaDeDientes_RecibeUnPrecioEspecial_PorLoTantoElPrecioTotal_Debe_Ser_7_49()
     {
         var receipt = new SupermarketReceipt();
-        var discount = new Discount("TuboPastaDientes", "Bundle", 1.46m);
+        var discount = new Discount("TuboPastaDientes", "Bundle", 1.46m, 5);
         receipt.AddDiscount(discount);
         
         receipt.AddProductToCar("TuboPastaDientes");
@@ -112,7 +112,7 @@ public class SupermarketReceiptTest
     public void Si_Compra4TubosDePastaDeDientes_NoRecibeUnPrecioEspecial_PorLoTantoElPrecioTotal_Debe_Ser_7_16()
     {
         var receipt = new SupermarketReceipt();
-        var discount = new Discount("TuboPastaDientes", "Bundle", 1.46m);
+        var discount = new Discount("TuboPastaDientes", "Bundle", 1.46m, 5);
         receipt.AddDiscount(discount);
         
         receipt.AddProductToCar("TuboPastaDientes");
@@ -127,7 +127,7 @@ public class SupermarketReceiptTest
     public void Si_Compra2CajasDeTomatesCherry_RecibeUnPrecioEspecial_PorLoTantoElPrecioTotal_Debe_Ser_0_99()
     {
         var receipt = new SupermarketReceipt();
-        var discount = new Discount("TomateCherry", "Bundle", 0.39m);
+        var discount = new Discount("TomateCherry", "Bundle", 0.39m, 2);
         receipt.AddDiscount(discount);
         
         receipt.AddProductToCar("TomateCherry");
