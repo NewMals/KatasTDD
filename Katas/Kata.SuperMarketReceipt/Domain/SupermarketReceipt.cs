@@ -15,14 +15,14 @@ public class SupermarketReceipt
     public void AddProductToCar(string product)
     {
         _catalog.ExistsProductInCatalog(product);
-        _products.Add(product);
+        _productsInCar.Add(product);
     }
 
-    public decimal GetReceipt()
+    public decimal GetTotalPrice()
     {
-        var discountsInProducts = _discounts.GetDiscounts();
+        var discountsInProducts = _catalog.GetDiscounts();
 
-        var discountValue = _products
+        var discountValue = _productsInCar
             .Select(product => discountsInProducts.SingleOrDefault(discountFind => discountFind.ProductName == product))
             .Aggregate(0m, (current, discount) => discount?.Type switch
             {
@@ -32,7 +32,7 @@ public class SupermarketReceipt
                 _ => current
             });
 
-        return _products.Sum(product => _catalog.GetPriceProduct(product)) - discountValue;
+        return _productsInCar.Sum(product => _catalog.GetPriceProduct(product)) - discountValue;
     }
 
     private decimal DiscountAmount(int freeAmount)
