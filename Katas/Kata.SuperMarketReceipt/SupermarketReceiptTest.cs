@@ -107,4 +107,19 @@ public class SupermarketReceiptTest
         
         receipt.GetReceipt().Should().Be(7.49m);
     }
+    
+    [Fact]
+    public void Si_Compra4TubosDePastaDeDientes_NoRecibeUnPrecioEspecial_PorLoTantoElPrecioTotal_Debe_Ser_7_16()
+    {
+        var receipt = new SupermarketReceipt();
+        var discount = new Discount("TuboPastaDientes", "Price", 1.46m);
+        receipt.AddDiscount(discount);
+        
+        receipt.AddProductToCar("TuboPastaDientes");
+        receipt.AddProductToCar("TuboPastaDientes");
+        receipt.AddProductToCar("TuboPastaDientes");
+        receipt.AddProductToCar("TuboPastaDientes");
+        
+        receipt.GetReceipt().Should().Be(7.49m);
+    }
 }
