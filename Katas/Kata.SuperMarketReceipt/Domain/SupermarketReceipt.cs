@@ -27,6 +27,7 @@ public class SupermarketReceipt
             {
                 "Amount" => DiscountAmount(discount.Value),
                 "Percentage" => DiscountPercentage(discount.Value, discount.ProductName),
+                "Price" => discount.Value,
                 _ => current
             });
 

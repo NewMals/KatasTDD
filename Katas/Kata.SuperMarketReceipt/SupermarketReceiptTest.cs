@@ -96,9 +96,13 @@ public class SupermarketReceiptTest
     public void Si_Compra5TubosDePastaDeDientes_RecibeUnPrecioEspecial_PorLoTantoElPrecioTotal_Debe_Ser_7_49()
     {
         var receipt = new SupermarketReceipt();
-        var discount = new Discount("TuboPastaDientes", "Price", 7.49m);
+        var discount = new Discount("TuboPastaDientes", "Price", 1.46m);
         receipt.AddDiscount(discount);
         
+        receipt.AddProductToCar("TuboPastaDientes");
+        receipt.AddProductToCar("TuboPastaDientes");
+        receipt.AddProductToCar("TuboPastaDientes");
+        receipt.AddProductToCar("TuboPastaDientes");
         receipt.AddProductToCar("TuboPastaDientes");
         
         receipt.GetReceipt().Should().Be(7.49m);
