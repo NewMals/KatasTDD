@@ -11,3 +11,15 @@ public class StoreProducts
         new(nameof(ProductName.TomateCherry), 0.69m)
     ];
 }
+
+public class StoreDiscounts
+{
+    private readonly List<Discount> _discounts = [];
+
+    public void AddDiscount(Discount discount)
+    {
+        _discounts.Add(discount);
+    }
+    
+    public List<Discount> GetDiscounts() => _discounts;
+}

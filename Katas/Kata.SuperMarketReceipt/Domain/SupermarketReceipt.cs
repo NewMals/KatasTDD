@@ -3,37 +3,34 @@ namespace Kata.SuperMarketReceipt.Domain;
 public class SupermarketReceipt
 {
     private readonly Catalog _catalog = new();
+    private readonly StoreDiscounts _discounts = new();
     private readonly List<string> _products = [];
-    private readonly List<string> _discounts = [];
-
     public void AddProductToCar(string product)
     {
         _catalog.ExistsProductInCatalog(product);
         _products.Add(product);
     }
 
-    public void AddDiscounts(List<string> discounts)
+    public void AddDiscount(Discount discount)
     {
-        _discounts.AddRange(discounts);
+        _catalog.ExistsProductInCatalog(discount.ProductName);
+        _discounts.AddDiscount(discount);
     }
 
     public decimal GetReceipt()
     {
-        var discount = 0m;
-        
-        if(_discounts.Any(product => product == nameof(ProductName.Cepillo)) 
-           && _products.Count(product => product == nameof(ProductName.Cepillo)) == 3)
-            discount = DiscountAmount(1);
-        
-        if(_discounts.Any(product => product == nameof(ProductName.Manzana))
-           && _products.Any(product => product == nameof(ProductName.Manzana)))
-            discount = DiscountPercentage(0.2m, nameof(ProductName.Manzana)); 
-        
-        if(_discounts.Any(product => product == nameof(ProductName.Arroz))
-           && _products.Any(product => product == nameof(ProductName.Arroz)))
-            discount = DiscountPercentage(0.1m,  nameof(ProductName.Arroz)); 
+        var discountsInProducts = _discounts.GetDiscounts();
 
-        return _products.Sum(product => _catalog.GetPriceProduct(product)) - discount;
+        var discountValue = _products
+            .Select(product => discountsInProducts.SingleOrDefault(discountFind => discountFind.ProductName == product))
+            .Aggregate(0m, (current, discount) => discount?.Type switch
+            {
+                "Amount" => DiscountAmount(discount.Value),
+                "Percentage" => DiscountPercentage(discount.Value, discount.ProductName),
+                _ => current
+            });
+
+        return _products.Sum(product => _catalog.GetPriceProduct(product)) - discountValue;
     }
 
     private decimal DiscountAmount(int freeAmount)
@@ -51,3 +48,5 @@ public class SupermarketReceipt
             .Sum(productFinded => _catalog.GetPriceProduct(productFinded)) * percentage;
     }
 }
+
+public record Discount(string ProductName, string Type, dynamic Value);

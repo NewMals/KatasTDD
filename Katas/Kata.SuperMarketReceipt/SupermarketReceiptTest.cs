@@ -58,7 +58,8 @@ public class SupermarketReceiptTest
     public void Si_CompraSoloDosCepillosElTerceroEsGratisPorMotivoDeDescuento_PorLoTantoElPrecioTotal_Debe_Ser_1_98()
     {
         var receipt = new SupermarketReceipt();
-        receipt.AddDiscounts(["Cepillo"]);
+        var discount = new Discount("Cepillo", "Amount", 1);
+        receipt.AddDiscount(discount);
         
         receipt.AddProductToCar("Cepillo");
         receipt.AddProductToCar("Cepillo");
@@ -71,7 +72,8 @@ public class SupermarketReceiptTest
     public void Si_Compra1KiloDeManzanas_Recibe20PorcientoDeDescuento_PorLoTantoElPrecioTotal_Debe_Ser_1_592()
     {
         var receipt = new SupermarketReceipt();
-        receipt.AddDiscounts(["Manzana"]);
+        var discount = new Discount("Manzana", "Percentage", 0.2m);
+        receipt.AddDiscount(discount);
         
         receipt.AddProductToCar("Manzana");
         
@@ -82,7 +84,8 @@ public class SupermarketReceiptTest
     public void Si_Compra1SacoDeArroz_Recibe10PorcientoDeDescuento_PorLoTantoElPrecioTotal_Debe_Ser_2_241()
     {
         var receipt = new SupermarketReceipt();
-        receipt.AddDiscounts(["Arroz"]);
+        var discount = new Discount("Arroz", "Percentage", 0.1m);
+        receipt.AddDiscount(discount);
         
         receipt.AddProductToCar("Arroz");
         
