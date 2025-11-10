@@ -77,4 +77,15 @@ public class SupermarketReceiptTest
         
         receipt.GetReceipt().Should().Be(1.592m);
     }
+    
+    [Fact]
+    public void Si_Compra1SacoDeArroz_Recibe10PorcientoDeDescuento_PorLoTantoElPrecioTotal_Debe_Ser_2_241()
+    {
+        var receipt = new SupermarketReceipt();
+        receipt.AddDiscounts(["Arroz"]);
+        
+        receipt.AddProductToCar("Arroz");
+        
+        receipt.GetReceipt().Should().Be(2.241m);
+    }
 }
