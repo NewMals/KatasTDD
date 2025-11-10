@@ -19,10 +19,15 @@ public class SupermarketReceipt
 
     public decimal GetTotalPrice()
     {
-        var discountsInProducts = _catalog.GetDiscounts();
+        var discountValue = CalculateDiscount();
+        var totalPrice = _productsInCar.Sum(product => _catalog.GetPriceProduct(product));
+        return totalPrice - discountValue;
+    }
 
+    private decimal CalculateDiscount()
+    {
         var discountValue = _productsInCar
-            .Select(product => discountsInProducts.SingleOrDefault(discountFind => discountFind.ProductName == product))
+            .Select(product => _catalog.GetDiscounts().SingleOrDefault(discountFind => discountFind.ProductName == product))
             .Aggregate(0m, (current, discount) => discount?.Type switch
             {
                 "Quantity" => DiscountByQuantity(discount.ProductName),
@@ -30,10 +35,7 @@ public class SupermarketReceipt
                 "Bundle" => DiscountByBundle( discount.ProductName,discount.PriceDiscount, discount.Size),
                 _ => current
             });
-        
-        var totalPrice = _productsInCar.Sum(product => _catalog.GetPriceProduct(product));
-        
-        return totalPrice - discountValue;
+        return discountValue;
     }
 
     private decimal DiscountByQuantity(string product)
