@@ -135,4 +135,17 @@ public class SupermarketReceiptTest
         
         receipt.GetReceipt().Should().Be(0.99m);
     }
+    
+    [Fact]
+    public void Si_Compra3CajasDeTomatesCherry_RecibeUnPrecioEspecialPorLas2CajasPero1LaDebePagarAPrecioNormal_PorLoTantoElPrecioTotal_Debe_Ser_1_68()
+    {
+        var receipt = new SupermarketReceipt();
+        var discount = new Discount("TomateCherry", "Bundle", 0.39m, 2);
+        receipt.AddDiscount(discount);
+        
+        receipt.AddProductToCar("TomateCherry");
+        receipt.AddProductToCar("TomateCherry");
+        
+        receipt.GetReceipt().Should().Be(1.68m);
+    }
 }
