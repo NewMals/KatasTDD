@@ -54,7 +54,7 @@ public class SupermarketReceiptTest
     }
 
     [Fact]
-    public void Si_CompraSoloDosCepillosElTerceroEsGratisPorMotivoDeDescuento_PorLotantoElPrecioTotal_Debe_Ser_1_98()
+    public void Si_CompraSoloDosCepillosElTerceroEsGratisPorMotivoDeDescuento_PorLoTantoElPrecioTotal_Debe_Ser_1_98()
     {
         var receipt = new SupermarketReceipt();
         
@@ -63,6 +63,16 @@ public class SupermarketReceiptTest
         receipt.AddProductToCar("Cepillo");
         
         receipt.GetReceipt().Should().Be(1.98m);
+    }
+    
+    [Fact]
+    public void Si_Compra1KiloDeManzanas_Recibe20PorcientoDeDescuento_PorLoTantoElPrecioTotal_Debe_Ser_1_592()
+    {
+        var receipt = new SupermarketReceipt();
+        
+        receipt.AddProductToCar("Manzana");
+        
+        receipt.GetReceipt().Should().Be(1.592m);
     }
 }
 
