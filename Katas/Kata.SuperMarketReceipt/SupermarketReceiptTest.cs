@@ -19,7 +19,7 @@ public class SupermarketReceiptTest
         
         receipt.AddProductToCar(product);
         
-        receipt.GetReceipt().Should().Be(totalPrice);
+        receipt.GetTotalPrice().Should().Be(totalPrice);
     }
 
     [Fact]
@@ -51,11 +51,11 @@ public class SupermarketReceiptTest
         receipt.AddProductToCar("Cepillo");
         receipt.AddProductToCar("TuboPastaDientes");
         
-        receipt.GetReceipt().Should().Be(2.78m);
+        receipt.GetTotalPrice().Should().Be(2.78m);
     }
 
     [Fact]
-    public void Si_CompraSoloDosCepillosElTerceroEsGratisPorMotivoDeDescuento_PorLoTantoElPrecioTotal_Debe_Ser_1_98()
+    public void Si_CompraSoloTresCepillosElTerceroEsGratisPorMotivoDeDescuento_PorLoTantoElPrecioTotal_Debe_Ser_1_98()
     {
         var receipt = new SupermarketReceipt();
         var discount = new Discount("Cepillo", "Amount", 1);
@@ -65,7 +65,20 @@ public class SupermarketReceiptTest
         receipt.AddProductToCar("Cepillo");
         receipt.AddProductToCar("Cepillo");
         
-        receipt.GetReceipt().Should().Be(1.98m);
+        receipt.GetTotalPrice().Should().Be(1.98m);
+    }
+    
+    [Fact]
+    public void Si_CompraSoloDosCepillos_NoTieneDescuento_PorLoTantoElPrecioTotal_Debe_Ser_1_98()
+    {
+        var receipt = new SupermarketReceipt();
+        var discount = new Discount("Cepillo", "Amount", 1);
+        receipt.AddDiscount(discount);
+        
+        receipt.AddProductToCar("Cepillo");
+        receipt.AddProductToCar("Cepillo");
+        
+        receipt.GetTotalPrice().Should().Be(1.98m);
     }
     
     [Fact]
@@ -77,7 +90,7 @@ public class SupermarketReceiptTest
         
         receipt.AddProductToCar("Manzana");
         
-        receipt.GetReceipt().Should().Be(1.592m);
+        receipt.GetTotalPrice().Should().Be(1.592m);
     }
     
     [Fact]
@@ -89,7 +102,7 @@ public class SupermarketReceiptTest
         
         receipt.AddProductToCar("Arroz");
         
-        receipt.GetReceipt().Should().Be(2.241m);
+        receipt.GetTotalPrice().Should().Be(2.241m);
     }
     
     [Fact]
@@ -105,7 +118,7 @@ public class SupermarketReceiptTest
         receipt.AddProductToCar("TuboPastaDientes");
         receipt.AddProductToCar("TuboPastaDientes");
         
-        receipt.GetReceipt().Should().Be(7.49m);
+        receipt.GetTotalPrice().Should().Be(7.49m);
     }
     
     [Fact]
@@ -120,7 +133,7 @@ public class SupermarketReceiptTest
         receipt.AddProductToCar("TuboPastaDientes");
         receipt.AddProductToCar("TuboPastaDientes");
         
-        receipt.GetReceipt().Should().Be(7.16m);
+        receipt.GetTotalPrice().Should().Be(7.16m);
     }
     
     [Fact]
@@ -133,7 +146,7 @@ public class SupermarketReceiptTest
         receipt.AddProductToCar("TomateCherry");
         receipt.AddProductToCar("TomateCherry");
         
-        receipt.GetReceipt().Should().Be(0.99m);
+        receipt.GetTotalPrice().Should().Be(0.99m);
     }
     
     [Fact]
@@ -147,7 +160,7 @@ public class SupermarketReceiptTest
         receipt.AddProductToCar("TomateCherry");
         receipt.AddProductToCar("TomateCherry");
         
-        receipt.GetReceipt().Should().Be(1.68m);
+        receipt.GetTotalPrice().Should().Be(1.68m);
     }
     
     [Fact]
@@ -162,6 +175,6 @@ public class SupermarketReceiptTest
         receipt.AddProductToCar("TomateCherry");
         receipt.AddProductToCar("TomateCherry");
         
-        receipt.GetReceipt().Should().Be(1.98m);
+        receipt.GetTotalPrice().Should().Be(1.98m);
     }
 }
