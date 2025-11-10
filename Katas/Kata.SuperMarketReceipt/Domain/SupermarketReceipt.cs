@@ -74,7 +74,7 @@ public class SupermarketReceipt
         var discountsApply = CalculateDiscount();
         
         if(discountsApply > 0)
-            viewReceipt += $" Descuentos: {CalculateDiscount()}";
+            viewReceipt += $" Descuentos aplicados: {CalculateDiscount()}";
 
         return viewReceipt;
     }

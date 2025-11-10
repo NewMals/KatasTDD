@@ -216,6 +216,6 @@ public class SupermarketReceiptTest
         receipt.AddProductToCar("TuboPastaDientes");
         receipt.AddProductToCar("Manzana");
 
-        receipt.GetReceipt().Should().Be(" 2 Manzana\n 1 TuboPastaDientes\n Descuentos: 0,796");
+        receipt.GetReceipt().Should().Be(" 2 Manzana\n 1 TuboPastaDientes\n Descuentos aplicados: 0,796");
     }
 }
