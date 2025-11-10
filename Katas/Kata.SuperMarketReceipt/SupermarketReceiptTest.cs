@@ -197,6 +197,18 @@ public class SupermarketReceiptTest
     public void Si_Compra2KiloDeManzanasY1TuboDePastaDeDientes_Debe_MostrarElDetalleDeLosProductos()
     {
         var receipt = new SupermarketReceipt();
+        
+        receipt.AddProductToCar("Manzana");
+        receipt.AddProductToCar("TuboPastaDientes");
+        receipt.AddProductToCar("Manzana");
+
+        receipt.GetReceipt().Should().Be(" 2 Manzana\n 1 TuboPastaDientes\n");
+    }
+    
+    [Fact]
+    public void Si_Compra2KiloDeManzanasY1TuboDePastaDeDientes_Debe_MostrarElDetalleDeLosProductosYSusDescuentos()
+    {
+        var receipt = new SupermarketReceipt();
         var discountApple = new Discount("Manzana", "Percentage", 0.2m);
         var discountRice = new Discount("Arroz", "Percentage", 0.1m);
         var discountToothpaste = new Discount("TuboPastaDientes", "Bundle", 1.46m, 5);
@@ -208,6 +220,6 @@ public class SupermarketReceiptTest
         receipt.AddProductToCar("TuboPastaDientes");
         receipt.AddProductToCar("Manzana");
 
-        receipt.GetReceipt().Should().Be(" 2 Manzana\n 1 TuboPastaDientes\n");
+        receipt.GetReceipt().Should().Be(" 2 Manzana\n 1 TuboPastaDientes\n Descuentos: 0.398");
     }
 }
