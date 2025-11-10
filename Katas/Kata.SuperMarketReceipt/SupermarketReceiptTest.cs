@@ -58,7 +58,7 @@ public class SupermarketReceiptTest
     public void Si_CompraSoloTresCepillosElTerceroEsGratisPorMotivoDeDescuento_PorLoTantoElPrecioTotal_Debe_Ser_1_98()
     {
         var receipt = new SupermarketReceipt();
-        var discount = new Discount("Cepillo", "Amount", 1);
+        var discount = new Discount("Cepillo", "Quantity", 1);
         receipt.AddDiscount(discount);
         
         receipt.AddProductToCar("Cepillo");
@@ -69,10 +69,10 @@ public class SupermarketReceiptTest
     }
     
     [Fact]
-    public void Si_CompraSoloDosCepillos_NoTieneDescuento_PorLoTantoElPrecioTotal_Debe_Ser_1_98()
+    public void Si_CompraSoloDosCepillosYNoseAgregaElTercerCepillo_NoTieneDescuento_PorLoTantoElPrecioTotal_Debe_Ser_1_98()
     {
         var receipt = new SupermarketReceipt();
-        var discount = new Discount("Cepillo", "Amount", 1);
+        var discount = new Discount("Cepillo", "Quantity", 1);
         receipt.AddDiscount(discount);
         
         receipt.AddProductToCar("Cepillo");

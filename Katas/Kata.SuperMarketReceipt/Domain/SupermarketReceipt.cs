@@ -3,13 +3,12 @@ namespace Kata.SuperMarketReceipt.Domain;
 public class SupermarketReceipt
 {
     private readonly Catalog _catalog = new();
-    private readonly StoreDiscounts _discounts = new();
-    private readonly List<string> _products = [];
+    private readonly List<string> _productsInCar = [];
     
     public void AddDiscount(Discount discount)
     {
         _catalog.ExistsProductInCatalog(discount.ProductName);
-        _discounts.AddDiscount(discount);
+        _catalog.AddDiscount(discount);
     }
     
     public void AddProductToCar(string product)
@@ -26,33 +25,36 @@ public class SupermarketReceipt
             .Select(product => discountsInProducts.SingleOrDefault(discountFind => discountFind.ProductName == product))
             .Aggregate(0m, (current, discount) => discount?.Type switch
             {
-                "Amount" => DiscountAmount(discount.Value),
-                "Percentage" => DiscountPercentage(discount.Value, discount.ProductName),
-                "Bundle" => DiscountBundle(discount.Value, discount.ProductName, discount.Size),
+                "Quantity" => DiscountByQuantity(discount.ProductName),
+                "Percentage" => DiscountByPercentage(discount.PriceDiscount, discount.ProductName),
+                "Bundle" => DiscountByBundle( discount.ProductName,discount.PriceDiscount, discount.Size),
                 _ => current
             });
-
-        return _productsInCar.Sum(product => _catalog.GetPriceProduct(product)) - discountValue;
+        
+        var totalPrice = _productsInCar.Sum(product => _catalog.GetPriceProduct(product));
+        
+        return totalPrice - discountValue;
     }
 
-    private decimal DiscountAmount(int freeAmount)
+    private decimal DiscountByQuantity(string product)
     {
-        return _products
-            .Where(product => product == nameof(ProductName.Cepillo))
-            .Take(freeAmount)
-            .Sum(product => _catalog.GetPriceProduct(product));
+        var priceUnit = _catalog.GetPriceProduct(product);
+        var itemsQuantity = _productsInCar.Count(productInCar => productInCar == product);
+        var itemsFree = itemsQuantity / 3;
+        var itemsPay =  itemsQuantity - itemsFree;
+        return priceUnit *  (itemsQuantity - itemsPay);
     }
 
-    private decimal DiscountPercentage(decimal percentage, string product)
+    private decimal DiscountByPercentage(decimal percentage, string product)
     {
-        return _products
+        return _productsInCar
             .Where(productFind => productFind == product)
-            .Sum(productFinded => _catalog.GetPriceProduct(productFinded)) * percentage;
+            .Sum(productFound => _catalog.GetPriceProduct(productFound)) * percentage;
     }
 
-    private decimal DiscountBundle(decimal bundlePrice, string product, int size)
+    private decimal DiscountByBundle(string product, decimal bundlePrice, int size)
     {
-        var numberOfBundles = _products.Count(productFind => productFind == product) / size;
+        var numberOfBundles = _productsInCar.Count(productFind => productFind == product) / size;
         var discount = numberOfBundles % size == 0 ? numberOfBundles * bundlePrice : bundlePrice;
         return numberOfBundles > 0 ? discount : 0;
     }
