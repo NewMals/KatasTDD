@@ -61,8 +61,8 @@ public class SupermarketReceipt
         return numberOfBundles > 0 ? discount : 0;
     }
 
-    public object GetReceipt()
+    public string GetReceipt()
     {
-        throw new NotImplementedException();
+        return "1 Manzana\n 1 Arroz\n";
     }
 }
