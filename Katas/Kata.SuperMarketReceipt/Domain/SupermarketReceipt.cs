@@ -60,4 +60,9 @@ public class SupermarketReceipt
         var discount = numberOfBundles % size == 0 ? numberOfBundles * bundlePrice : bundlePrice;
         return numberOfBundles > 0 ? discount : 0;
     }
+
+    public object GetReceipt()
+    {
+        throw new NotImplementedException();
+    }
 }

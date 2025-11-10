@@ -177,4 +177,19 @@ public class SupermarketReceiptTest
         
         receipt.GetTotalPrice().Should().Be(1.98m);
     }
+
+    [Fact]
+    public void Si_Compra1KiloDeManzanasY1SacoDeArroz_Debe_MostrarElDetalleDeLosProductos()
+    {
+        var receipt = new SupermarketReceipt();
+        var discountApple = new Discount("Manzana", "Percentage", 0.2m);
+        var discountRice = new Discount("Arroz", "Percentage", 0.1m);
+        receipt.AddDiscount(discountApple);
+        receipt.AddDiscount(discountRice);
+        
+        receipt.AddProductToCar("Manzana");
+        receipt.AddProductToCar("Arroz");
+
+        receipt.GetReceipt().Should().Be("1 Manzana\n 1 Arroz\n");
+    }
 }
