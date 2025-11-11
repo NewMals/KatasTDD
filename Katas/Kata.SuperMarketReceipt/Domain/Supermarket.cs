@@ -1,6 +1,6 @@
 namespace Kata.SuperMarketReceipt.Domain;
 
-public class SupermarketReceipt
+public class Supermarket
 {
     private readonly Catalog _catalog = new();
     private readonly List<string> _productsInCar = [];
