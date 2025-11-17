@@ -83,72 +83,73 @@ public class WordWrapTest
         if (string.IsNullOrEmpty(text))
             return text;
 
-        var wrapText = new List<string>();
-
-        if (text.Contains(' '))
-        {
-            var words = text.Split(' ');
-            var currentLine = "";
-
-            foreach (var word in words)
-            {
-                if (word.Length > col)
-                {
-                    if (currentLine.Length > 0)
-                    {
-                        wrapText.Add(currentLine);
-                        currentLine = "";
-                    }
-
-                    wrapText.AddRange(WrapText(word, col));
-                    continue;
-                }
-
-                if (currentLine.Length == 0)
-                {
-                    currentLine = word;
-                    continue;
-                }
-
-                if (currentLine.Length + 1 + word.Length <= col)
-                {
-                    currentLine += " " + word;
-                }
-                else
-                {
-                    wrapText.Add(currentLine);
-                    currentLine = word;
-                }
-            }
-
-            if (currentLine.Length > 0)
-                wrapText.Add(currentLine);
-        }
-
-        else
-        {
-            wrapText.AddRange(WrapText(text, col));
-        }
-
-        return JoinText(wrapText);
+        return text.Contains(' ')
+            ? WrapWithSpaces(text, col)
+            : JoinText(WrapText(text, col));
     }
     
     private static List<string> WrapText(string text, int col)
     {
         var wrapped = new List<string>();
-        var size = text.Length;
-        for (var i = 0; i < size; i += col)
+
+        for (var i = 0; i < text.Length; i += col)
         {
-            wrapped.Add(col > size - i 
-                ? text.Substring(i, size - i) 
-                : text.Substring(i, col)
-            );
+            var length = Math.Min(col, text.Length - i);
+            wrapped.Add(text.Substring(i, length));
         }
-        
+
         return wrapped;
     }
-    
-    
+    private static string WrapWithSpaces(string text, int col)
+    {
+        var words = text.Split(' ');
+        var wrappedLines = new List<string>();
+        var currentLine = "";
+
+        foreach (var word in words)
+        {
+            if (IsLongerThanColumn(word, col))
+            {
+                FlushCurrentLineIfNeeded(wrappedLines, currentLine);
+                wrappedLines.AddRange(WrapText(word, col));
+                continue;
+            }
+
+            if (IsCurrentLineEmpty(currentLine))
+            {
+                currentLine = word;
+                continue;
+            }
+
+            if (FitsInCurrentLine(currentLine, word, col))
+            {
+                currentLine = AppendWord(currentLine, word);
+            }
+            else
+            {
+                wrappedLines.Add(currentLine);
+                currentLine = word;
+            }
+        }
+
+        FlushCurrentLineIfNeeded(wrappedLines, currentLine);
+        return JoinText(wrappedLines);
+    }
+
     private static string JoinText(List<string> listText) => string.Join("\n", listText);
     
+    private static bool IsLongerThanColumn(string word, int col) => word.Length > col;
+
+    private static bool IsCurrentLineEmpty(string line) => line.Length == 0;
+
+    private static bool FitsInCurrentLine(string line, string word, int col)
+        => line.Length + 1 + word.Length <= col;
+
+    private static string AppendWord(string line, string word) => $"{line} {word}";
+
+    private static void FlushCurrentLineIfNeeded(List<string> lines, string currentLine)
+    {
+        if (currentLine.Length > 0) 
+            lines.Add(currentLine);
+    }
 }
