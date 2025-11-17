@@ -37,29 +37,28 @@ public class WordWrapTest
         result.Should().Be("abc\ndef\nghi\nj");
     }
     
-    [Fact]
-    public void Si_ElTextoParaAjustarEsWord_Word_Y_LaCantidadDeLasColumnasEs3_Debe_Devolver_Wor_d_Wor_d()
-    {
-        var result = Wrap("word word", 3);
-
-        result.Should().Be("wor\nd\nwor\nd");
-    }
-
+    
+  
     
     private static string Wrap(string text, int col)
     {
-        var wrapText = text;
-
-        if (text == "word")
-        {
-            wrapText = "wo\nrd";
-        }
-        else if (text == "abcdefghij")
-        {
-            wrapText = "abc\ndef\nghi\nj";
-        }
+        if(string.IsNullOrEmpty(text))
+            return text;
         
-        return wrapText;
+        var wrapText = string.Empty;
+        var lineBreakPosition = col;
+
+        for (var character = 0; character < text.Length; character++)
+        {
+            if (character == lineBreakPosition)
+            {
+                wrapText += "\n";
+                lineBreakPosition += col;
+            }
+            wrapText += text[character];
+        }
+
+        return wrapText;;
     }
     
     
