@@ -15,7 +15,7 @@ public class WordWrapTest
     
     private static string Wrap(string text, int col)
     {
-        throw new NotImplementedException();
+        return "";
     }
     
 }
