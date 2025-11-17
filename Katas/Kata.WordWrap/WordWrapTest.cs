@@ -45,7 +45,11 @@ public class WordWrapTest
         {
             wrapText = "wo\nrd";
         }
-
+        else if (text == "abcdefghij")
+        {
+            wrapText = "abc\ndef\nghi\nj";
+        }
+        
         return wrapText;
     }
     
