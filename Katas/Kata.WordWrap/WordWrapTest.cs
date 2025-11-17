@@ -70,6 +70,13 @@ public class WordWrapTest
         result.Should().Be("word\nword\nword");
     }
 
+    [Fact]
+    public void Si_ElTextoParaAjustarEsWord_Word_Word_Y_LaCantidadDeLasColumnas11Es_Debe_Devolver_WordWord_Word()
+    {
+        var result = Wrap("word word word", 11);
+
+        result.Should().Be("word word\nword");
+    }
     
     private static string Wrap(string text, int col)
     {
