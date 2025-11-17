@@ -80,24 +80,55 @@ public class WordWrapTest
     
     private static string Wrap(string text, int col)
     {
-        if(string.IsNullOrEmpty(text))
+        if (string.IsNullOrEmpty(text))
             return text;
-     
+
         var wrapText = new List<string>();
 
         if (text.Contains(' '))
         {
             var words = text.Split(' ');
-            
+            var currentLine = "";
+
             foreach (var word in words)
             {
-                wrapText.AddRange(WrapText(word, col));
+                if (word.Length > col)
+                {
+                    if (currentLine.Length > 0)
+                    {
+                        wrapText.Add(currentLine);
+                        currentLine = "";
+                    }
+
+                    wrapText.AddRange(WrapText(word, col));
+                    continue;
+                }
+
+                if (currentLine.Length == 0)
+                {
+                    currentLine = word;
+                    continue;
+                }
+
+                if (currentLine.Length + 1 + word.Length <= col)
+                {
+                    currentLine += " " + word;
+                }
+                else
+                {
+                    wrapText.Add(currentLine);
+                    currentLine = word;
+                }
             }
+
+            if (currentLine.Length > 0)
+                wrapText.Add(currentLine);
         }
+
         else
         {
             wrapText.AddRange(WrapText(text, col));
-        }    
+        }
 
         return JoinText(wrapText);
     }
