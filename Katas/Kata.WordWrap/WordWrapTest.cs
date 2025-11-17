@@ -69,30 +69,26 @@ public class WordWrapTest
             return text;
 
         var textWrap = string.Empty;
-        var words = text.Split(' ');
         var wordsWrap = new List<string>();
 
-        foreach (var word in words)
+        if (text.Contains(' '))
         {
-            if(word.Length < col)
-                wordsWrap.Add(word);
-            else
+            var words = text.Split(' ');
+            foreach (var word in words)
             {
-                var wrapWord = string.Empty;
-                var lineBreakPosition = col;
-                for (var character = 0; character < word.Length; character++)
+                if(word.Length < col)
+                    wordsWrap.Add(word);
+                else
                 {
-                    if (character == lineBreakPosition)
-                    {
-                        wrapWord += "\n";
-                        lineBreakPosition += col;
-                    }
-                    wrapWord += text[character];
+                    wordsWrap.Add(TextWrap(word, col));
                 }
-                wordsWrap.Add(wrapWord);
-            }
-
+            } 
         }
+        else
+        {
+            wordsWrap.Add(TextWrap(text, col));
+        }
+        
 
         var wordsCount = wordsWrap.Count;
         var findSpacePosition = text.IndexOf(' ');
@@ -110,5 +106,22 @@ public class WordWrapTest
         return textWrap;
     }
     
+    private static string TextWrap(string text, int lineBreakPosition)
+    {
+        var wrapWord = string.Empty;
+        var lineBreakIndex = lineBreakPosition;
+        for (var character = 0; character < text.Length; character++)
+        {
+            if (character == lineBreakIndex)
+            {
+                wrapWord += "\n";
+                lineBreakIndex += lineBreakPosition;
+            }
+
+            wrapWord += text[character];
+        }
+
+        return wrapWord;
+    }
     
 }
