@@ -75,61 +75,42 @@ public class WordWrapTest
     {
         if(string.IsNullOrEmpty(text))
             return text;
-
-        var textWrap = string.Empty;
-        var wordsWrap = new List<string>();
+     
+        var wrapText = new List<string>();
 
         if (text.Contains(' '))
         {
             var words = text.Split(' ');
+            
             foreach (var word in words)
             {
-                if(word.Length < col)
-                    wordsWrap.Add(word);
-                else
-                {
-                    wordsWrap.Add(TextWrap(word, col));
-                }
-            } 
+                wrapText.AddRange(WrapText(word, col));
+            }
         }
         else
         {
-            wordsWrap.Add(TextWrap(text, col));
-        }
-        
+            wrapText.AddRange(WrapText(text, col));
+        }    
 
-        var wordsCount = wordsWrap.Count;
-        var findSpacePosition = text.IndexOf(' ');
-        foreach (var word in wordsWrap)
-        {
-            wordsCount--;
-            textWrap += word;
-            if (wordsCount > 0)
-            {
-                if(findSpacePosition >= col - 1 || findSpacePosition < col - 1)    
-                    textWrap += "\n";
-            }
-        }
-
-        return textWrap;
+        return JoinText(wrapText);
     }
     
-    private static string TextWrap(string text, int lineBreakPosition)
+    private static List<string> WrapText(string text, int col)
     {
-        var wrapWord = string.Empty;
-        var lineBreakIndex = lineBreakPosition;
-        for (var character = 0; character < text.Length; character++)
+        var wrapped = new List<string>();
+        var size = text.Length;
+        for (var i = 0; i < size; i += col)
         {
-            if (character == lineBreakIndex)
-            {
-                wrapWord += "\n";
-                lineBreakIndex += lineBreakPosition;
-            }
-
-            wrapWord += text[character];
+            wrapped.Add(col > size - i 
+                ? text.Substring(i, size - i) 
+                : text.Substring(i, col)
+            );
         }
-
-        return wrapWord;
+        
+        return wrapped;
     }
+    
+    
+    private static string JoinText(List<string> listText) => string.Join("\n", listText);
     
 }
