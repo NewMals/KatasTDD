@@ -50,21 +50,47 @@ public class WordWrapTest
     {
         if(string.IsNullOrEmpty(text))
             return text;
-        
-        var wrapText = string.Empty;
-        var lineBreakPosition = col;
 
-        for (var character = 0; character < text.Length; character++)
+        var textWrap = string.Empty;
+        var words = text.Split(' ');
+        var wordsWrap = new List<string>();
+
+        foreach (var word in words)
         {
-            if (character == lineBreakPosition)
+            if(word.Length < col)
+                wordsWrap.Add(word);
+            else
             {
-                wrapText += "\n";
-                lineBreakPosition += col;
+                var wrapWord = string.Empty;
+                var lineBreakPosition = col;
+                for (var character = 0; character < word.Length; character++)
+                {
+                    if (character == lineBreakPosition)
+                    {
+                        wrapWord += "\n";
+                        lineBreakPosition += col;
+                    }
+                    wrapWord += text[character];
+                }
+                wordsWrap.Add(wrapWord);
             }
-            wrapText += text[character];
+
         }
 
-        return wrapText;;
+        var wordsCount = wordsWrap.Count;
+        var findSpacePosition = text.IndexOf(' ');
+        foreach (var word in wordsWrap)
+        {
+            wordsCount--;
+            textWrap += word;
+            if (wordsCount > 0)
+            {
+                if(findSpacePosition > col - 1)
+                    textWrap += "\n";
+            }
+        }
+
+        return textWrap;
     }
     
     
