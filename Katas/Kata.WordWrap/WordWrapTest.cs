@@ -38,7 +38,13 @@ public class WordWrapTest
     }
     
     
-  
+    [Fact]
+    public void Si_ElTextoParaAjustarEsWord_Word_Y_LaCantidadDeLasColumnasEs3_Debe_Devolver_Wor_d_Wor_d()
+    {
+        var result = Wrap("word word", 3);
+
+        result.Should().Be("wor\nd\nwor\nd");
+    }
     
     private static string Wrap(string text, int col)
     {
