@@ -14,16 +14,25 @@ public class WordWrapTest
     }
     
     [Fact]
-    public void Si_ElTextoParaAjustarEsThis_Y_LaCantidadDeLasColumnaEs10_Debe_DevolverThis()
+    public void Si_ElTextoParaAjustarEsThis_Y_LaCantidadDeLasColumnasEs10_Debe_DevolverThis()
     {
         var result = Wrap("this", 10);
 
         result.Should().Be("this");
     }  
     
+    [Fact]
+    public void Si_ElTextoPataAjustarEsWord_Y_LaCantidadDeLasColumnasEs2_Debe_DevolverWo_rd()
+    {
+        var result = Wrap("word", 2);
+
+        result.Should().Be("wo\nrd");
+    } 
+    
     private static string Wrap(string text, int col)
     {
         return text;
     }
+    
     
 }
