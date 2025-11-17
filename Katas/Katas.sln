@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kata.MorningRoutines", "Kat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kata.SuperMarketReceipt", "Kata.SuperMarketReceipt\Kata.SuperMarketReceipt.csproj", "{022AA1D9-2D05-49C2-ADA3-BD19B1A9DFE6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kata.WordWrap", "Kata.WordWrap\Kata.WordWrap.csproj", "{297F4D21-F51A-4B30-A976-B20983BB826D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,5 +44,9 @@ Global
 		{022AA1D9-2D05-49C2-ADA3-BD19B1A9DFE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{022AA1D9-2D05-49C2-ADA3-BD19B1A9DFE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{022AA1D9-2D05-49C2-ADA3-BD19B1A9DFE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{297F4D21-F51A-4B30-A976-B20983BB826D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{297F4D21-F51A-4B30-A976-B20983BB826D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{297F4D21-F51A-4B30-A976-B20983BB826D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{297F4D21-F51A-4B30-A976-B20983BB826D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
