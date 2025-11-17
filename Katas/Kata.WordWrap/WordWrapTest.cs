@@ -6,7 +6,7 @@ public class WordWrapTest
 {
     
     [Fact]
-    public void Si_ElTextoParaAjustarEsVacio_Entonces_Debe_DevolverVacio()
+    public void Si_ElTextoParaAjustarEsVacio_Entonces_Debe_Devolver_Vacio()
     {
         var result = Wrap("", 1);
 
@@ -14,7 +14,7 @@ public class WordWrapTest
     }
     
     [Fact]
-    public void Si_ElTextoParaAjustarEsThis_Y_LaCantidadDeLasColumnasEs10_Debe_DevolverThis()
+    public void Si_ElTextoParaAjustarEsThis_Y_LaCantidadDeLasColumnasEs10_Debe_Devolver_This()
     {
         var result = Wrap("this", 10);
 
@@ -22,7 +22,7 @@ public class WordWrapTest
     }  
     
     [Fact]
-    public void Si_ElTextoParaAjustarEsWord_Y_LaCantidadDeLasColumnasEs2_Debe_DevolverWo_rd()
+    public void Si_ElTextoParaAjustarEsWord_Y_LaCantidadDeLasColumnasEs2_Debe_Devolver_Wo_rd()
     {
         var result = Wrap("word", 2);
 
@@ -30,12 +30,21 @@ public class WordWrapTest
     } 
     
     [Fact]
-    public void Si_ElTextoParaAjustarEsAbcdefghij_Y_LaCantidadDeLasColumnasEs3_Debe_DevolverAbc_def_ghi_j()
+    public void Si_ElTextoParaAjustarEsAbcdefghij_Y_LaCantidadDeLasColumnasEs3_Debe_Devolver_Abc_def_ghi_j()
     {
         var result = Wrap("abcdefghij", 3);
 
         result.Should().Be("abc\ndef\nghi\nj");
     }
+    
+    [Fact]
+    public void Si_ElTextoParaAjustarEsWord_Word_Y_LaCantidadDeLasColumnasEs3_Debe_Devolver_Wor_d_Wor_d()
+    {
+        var result = Wrap("word word", 3);
+
+        result.Should().Be("wor\nd\nwor\nd");
+    }
+
     
     private static string Wrap(string text, int col)
     {
