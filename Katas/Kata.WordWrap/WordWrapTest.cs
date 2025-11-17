@@ -22,12 +22,20 @@ public class WordWrapTest
     }  
     
     [Fact]
-    public void Si_ElTextoPataAjustarEsWord_Y_LaCantidadDeLasColumnasEs2_Debe_DevolverWo_rd()
+    public void Si_ElTextoParaAjustarEsWord_Y_LaCantidadDeLasColumnasEs2_Debe_DevolverWo_rd()
     {
         var result = Wrap("word", 2);
 
         result.Should().Be("wo\nrd");
     } 
+    
+    [Fact]
+    public void Si_ElTextoParaAjustarEsAbcdefghij_Y_LaCantidadDeLasColumnasEs3_Debe_DevolverAbc_def_ghi_j()
+    {
+        var result = Wrap("abcdefghij", 3);
+
+        result.Should().Be("abc\ndef\nghi\nj");
+    }
     
     private static string Wrap(string text, int col)
     {
