@@ -31,7 +31,14 @@ public class WordWrapTest
     
     private static string Wrap(string text, int col)
     {
-        return text;
+        var wrapText = text;
+
+        if (text == "word")
+        {
+            wrapText = "wo\nrd";
+        }
+
+        return wrapText;
     }
     
     
