@@ -93,7 +93,7 @@ public class WordWrapTest
             textWrap += word;
             if (wordsCount > 0)
             {
-                if(findSpacePosition > col - 1)
+                if(findSpacePosition > col - 1 || findSpacePosition < col - 1)    
                     textWrap += "\n";
             }
         }
